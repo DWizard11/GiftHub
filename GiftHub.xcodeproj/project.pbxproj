@@ -14,6 +14,8 @@
 		4CE56107290387F0001D233A /* GiftHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE56106290387F0001D233A /* GiftHubTests.swift */; };
 		4CE56111290387F0001D233A /* GiftHubUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE56110290387F0001D233A /* GiftHubUITests.swift */; };
 		4CE56113290387F0001D233A /* GiftHubUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE56112290387F0001D233A /* GiftHubUITestsLaunchTests.swift */; };
+		4CE5612029038B7E001D233A /* FriendSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5611F29038B7E001D233A /* FriendSearchView.swift */; };
+		4CE5612229038EBF001D233A /* FriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5612129038EBF001D233A /* FriendManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		4CE5610C290387F0001D233A /* GiftHubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GiftHubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE56110290387F0001D233A /* GiftHubUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHubUITests.swift; sourceTree = "<group>"; };
 		4CE56112290387F0001D233A /* GiftHubUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHubUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4CE5611F29038B7E001D233A /* FriendSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchView.swift; sourceTree = "<group>"; };
+		4CE5612129038EBF001D233A /* FriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			children = (
 				4CE560F4290387EF001D233A /* GiftHubApp.swift */,
 				4CE560F6290387EF001D233A /* ContentView.swift */,
+				4CE5611F29038B7E001D233A /* FriendSearchView.swift */,
+				4CE5612129038EBF001D233A /* FriendManager.swift */,
 				4CE560F8290387F0001D233A /* Assets.xcassets */,
 				4CE560FA290387F0001D233A /* GiftHub.entitlements */,
 				4CE560FB290387F0001D233A /* Preview Content */,
@@ -260,6 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CE560F7290387EF001D233A /* ContentView.swift in Sources */,
+				4CE5612229038EBF001D233A /* FriendManager.swift in Sources */,
+				4CE5612029038B7E001D233A /* FriendSearchView.swift in Sources */,
 				4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
