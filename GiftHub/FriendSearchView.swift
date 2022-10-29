@@ -6,28 +6,56 @@
 //
 
 import SwiftUI
+import Contacts
 
-struct FriendListView: View {
+struct FriendSearchView: View {
     
     @State var friends = [Friend(name: "Daniyal"),
                           Friend(name: "Felix"),
     ]
-    @State var searchText = ""
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(friends) { friend in
-                    Text(friend.name)
+        Text("Hello World")
+            .padding()
+            .onAppear {
+                
+                Task.init {
+                    await fetchAllContacts()
                 }
+                
             }
+            
+    }
+    func fetchAllContacts() async {
+        // Running in background async
+        
+        // Get access to Contacts store
+        let store = CNContactStore()
+        
+        // Specify which data keys we want to fetch
+        let keys = [CNContactGivenNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
+        
+        // Create fetch request
+        let fetchRequest = CNContactFetchRequest(keysToFetch: keys)
+        
+        // Call method to fetch all contacts
+        do {
+            try store.enumerateContacts(with: fetchRequest, usingBlock: { contact, result in
+                
+                // do something with contact
+                print(contact.givenName)
+                
+            })
         }
-        .searchable(text: $searchText)
+        catch {
+            // If there is an error, handle it here
+            print("Error")
+        }
     }
 }
 
-struct FriendListView_Previews: PreviewProvider {
+struct FriendSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendListView()
+        FriendSearchView()
     }
 }
