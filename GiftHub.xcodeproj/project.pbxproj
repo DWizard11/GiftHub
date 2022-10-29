@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */; };
 		4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE560F4290387EF001D233A /* GiftHubApp.swift */; };
 		4CE560F7290387EF001D233A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE560F6290387EF001D233A /* ContentView.swift */; };
 		4CE560F9290387F0001D233A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CE560F8290387F0001D233A /* Assets.xcassets */; };
@@ -14,7 +15,7 @@
 		4CE56107290387F0001D233A /* GiftHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE56106290387F0001D233A /* GiftHubTests.swift */; };
 		4CE56111290387F0001D233A /* GiftHubUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE56110290387F0001D233A /* GiftHubUITests.swift */; };
 		4CE56113290387F0001D233A /* GiftHubUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE56112290387F0001D233A /* GiftHubUITestsLaunchTests.swift */; };
-		4CE5612029038B7E001D233A /* FriendSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5611F29038B7E001D233A /* FriendSearchView.swift */; };
+		4CE5612029038B7E001D233A /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5611F29038B7E001D233A /* FriendListView.swift */; };
 		4CE5612229038EBF001D233A /* FriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5612129038EBF001D233A /* FriendManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendarView.swift; sourceTree = "<group>"; };
 		4CE560F1290387EF001D233A /* GiftHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiftHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE560F4290387EF001D233A /* GiftHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHubApp.swift; sourceTree = "<group>"; };
 		4CE560F6290387EF001D233A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,7 +49,7 @@
 		4CE5610C290387F0001D233A /* GiftHubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GiftHubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE56110290387F0001D233A /* GiftHubUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHubUITests.swift; sourceTree = "<group>"; };
 		4CE56112290387F0001D233A /* GiftHubUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHubUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4CE5611F29038B7E001D233A /* FriendSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchView.swift; sourceTree = "<group>"; };
+		4CE5611F29038B7E001D233A /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
 		4CE5612129038EBF001D233A /* FriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,9 +101,10 @@
 		4CE560F3290387EF001D233A /* GiftHub */ = {
 			isa = PBXGroup;
 			children = (
+				4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */,
 				4CE560F4290387EF001D233A /* GiftHubApp.swift */,
 				4CE560F6290387EF001D233A /* ContentView.swift */,
-				4CE5611F29038B7E001D233A /* FriendSearchView.swift */,
+				4CE5611F29038B7E001D233A /* FriendListView.swift */,
 				4CE5612129038EBF001D233A /* FriendManager.swift */,
 				4CE560F8290387F0001D233A /* Assets.xcassets */,
 				4CE560FA290387F0001D233A /* GiftHub.entitlements */,
@@ -267,8 +270,9 @@
 			files = (
 				4CE560F7290387EF001D233A /* ContentView.swift in Sources */,
 				4CE5612229038EBF001D233A /* FriendManager.swift in Sources */,
-				4CE5612029038B7E001D233A /* FriendSearchView.swift in Sources */,
+				4CE5612029038B7E001D233A /* FriendListView.swift in Sources */,
 				4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */,
+				4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,7 +429,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GiftHub/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSContactsUsageDescription = "Reason for accessing contacts ";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Contacts needed to access friends";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -462,7 +466,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GiftHub/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSContactsUsageDescription = "Reason for accessing contacts ";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Contacts needed to access friends";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

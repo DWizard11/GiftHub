@@ -12,3 +12,4 @@ struct Friend: Identifiable {
     
     var name: String
 }
+

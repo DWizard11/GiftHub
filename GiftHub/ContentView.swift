@@ -12,13 +12,13 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            ContentView()
+            HomeCalendarView()
                 .tabItem {
                     Label("Homepage", systemImage: "house.fill")
                 }
-            FriendSearchView()
+            FriendListView()
                 .tabItem {
-                    Label("Stats", systemImage: "magnifyingglass")
+                    Label("Friends Search", systemImage: "magnifyingglass")
                 }
         }
     }
