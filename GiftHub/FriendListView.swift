@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Contacts
+
 
 struct FriendListView: View {
     
@@ -17,12 +17,18 @@ struct FriendListView: View {
         NavigationView {
             List {
                 ForEach(searchResults, id: \.self) { friend in
-                    Text(friend)
+                    NavigationLink {
+                        FriendDetailView()
+                    } label: {
+                        Text(friend)
+                    }
+
                 }
             }
-            .searchable(text: $searchText)
+            .searchable(text: $searchText, prompt: "Search Friends")
             .navigationTitle("Friends")
         }
+        
     }
     
     var searchResults : [String] {
@@ -33,7 +39,7 @@ struct FriendListView: View {
         }
     }
     
-    struct FriendSearchView_Previews: PreviewProvider {
+    struct FriendListView_Previews: PreviewProvider {
         static var previews: some View {
             FriendListView()
         }

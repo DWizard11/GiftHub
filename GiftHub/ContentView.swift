@@ -18,7 +18,11 @@ struct ContentView: View {
                 }
             FriendListView()
                 .tabItem {
-                    Label("Friends Search", systemImage: "magnifyingglass")
+                    Label("Friends Search", systemImage: "person.fill")
+                }
+            GiftSearchView()
+                .tabItem {
+                    Label("Gift Search", systemImage: "magnifyingglass")
                 }
         }
     }

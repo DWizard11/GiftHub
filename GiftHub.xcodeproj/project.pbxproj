@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C68D961290FD0C900139E54 /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68D960290FD0C900139E54 /* FriendDetailView.swift */; };
+		4C68D963290FD4C400139E54 /* GiftSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68D962290FD4C400139E54 /* GiftSearchView.swift */; };
 		4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */; };
 		4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE560F4290387EF001D233A /* GiftHubApp.swift */; };
 		4CE560F7290387EF001D233A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE560F6290387EF001D233A /* ContentView.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C68D960290FD0C900139E54 /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
+		4C68D962290FD4C400139E54 /* GiftSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSearchView.swift; sourceTree = "<group>"; };
 		4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendarView.swift; sourceTree = "<group>"; };
 		4CE560F1290387EF001D233A /* GiftHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiftHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE560F4290387EF001D233A /* GiftHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHubApp.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 		4CE560F3290387EF001D233A /* GiftHub */ = {
 			isa = PBXGroup;
 			children = (
+				4C68D962290FD4C400139E54 /* GiftSearchView.swift */,
+				4C68D960290FD0C900139E54 /* FriendDetailView.swift */,
 				4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */,
 				4CE560F4290387EF001D233A /* GiftHubApp.swift */,
 				4CE560F6290387EF001D233A /* ContentView.swift */,
@@ -270,7 +276,9 @@
 			files = (
 				4CE560F7290387EF001D233A /* ContentView.swift in Sources */,
 				4CE5612229038EBF001D233A /* FriendManager.swift in Sources */,
+				4C68D963290FD4C400139E54 /* GiftSearchView.swift in Sources */,
 				4CE5612029038B7E001D233A /* FriendListView.swift in Sources */,
+				4C68D961290FD0C900139E54 /* FriendDetailView.swift in Sources */,
 				4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */,
 				4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */,
 			);
