@@ -13,26 +13,34 @@ struct NotificationView: View{
     let notify = NotificationHandler()
     
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
-            
-            DatePicker("Your Friend's Birthday:", selection: $selectedDate, in: Date()...)
-            Button("Schedule alert") {
-                notify.sendNotification(date: selectedDate,
-                                        type: "date",
-                                        title: "Hello!",
-                                        body: "Your Friend's Birthday is coming!")
-            }.tint(.orange)
-            
-            Spacer()
-            Text("Not working?")
-                .foregroundColor(.gray)
-                .italic()
-            Button("Request permissions") {
-                notify.askPermission()
+        ZStack{
+            Color.yellow
+                .opacity(0.2)
+            VStack(spacing: 20) {
+                Spacer()
+                
+                DatePicker("Your Friend's Birthday:", selection: $selectedDate, in: Date()...)
+                Button("Schedule alert") {
+                    notify.sendNotification(date: selectedDate,
+                                            type: "date",
+                                            title: "Hello!",
+                                            body: "Your Friend's Birthday is coming!")
+                }
+                .tint(.orange)
+                .padding(30)
+                .background(.white)
+                .cornerRadius(40)
+                
+                Spacer()
+                Text("Not working?")
+                    .foregroundColor(.gray)
+                    .italic()
+                Button("Request permissions") {
+                    notify.askPermission()
+                }
             }
+            .padding()
         }
-        .padding()
     }
 }
 struct NotificationView_Previews: PreviewProvider {
