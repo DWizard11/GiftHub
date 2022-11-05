@@ -16,8 +16,8 @@ struct NotificationView: View{
         VStack(spacing: 20) {
             Spacer()
             
-            DatePicker("Pick a date:", selection: $selectedDate, in: Date()...)
-            Button("Schedule notification") {
+            DatePicker("Your Friend's Birthday:", selection: $selectedDate, in: Date()...)
+            Button("Schedule alert") {
                 notify.sendNotification(date: selectedDate,
                                         type: "date",
                                         title: "Hello!",
