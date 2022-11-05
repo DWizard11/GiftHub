@@ -9,6 +9,7 @@ import SwiftUI
 import Contacts
 
 
+
 struct FriendListView: View {
     
     var contact: ContactInfo
