@@ -25,7 +25,7 @@ struct FriendListView: View {
                     Image(systemName: "magnifyingglass").foregroundColor(.secondary)
                     
                     //search bar text field
-                    TextField("search", text: self.$searchText, onEditingChanged: { isEditing in
+                    TextField("Search", text: self.$searchText, onEditingChanged: { isEditing in
                         self.showCancelButton = true
                     })
                     
