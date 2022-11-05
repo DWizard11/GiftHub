@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C17395C2915F5CB00978611 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17395B2915F5CB00978611 /* ContactsManager.swift */; };
 		4C68D961290FD0C900139E54 /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68D960290FD0C900139E54 /* FriendDetailView.swift */; };
 		4C68D963290FD4C400139E54 /* GiftSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68D962290FD4C400139E54 /* GiftSearchView.swift */; };
 		4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C17395B2915F5CB00978611 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		4C68D960290FD0C900139E54 /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
 		4C68D962290FD4C400139E54 /* GiftSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSearchView.swift; sourceTree = "<group>"; };
 		4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendarView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				4C68D962290FD4C400139E54 /* GiftSearchView.swift */,
+				4C17395B2915F5CB00978611 /* ContactsManager.swift */,
 				4C68D960290FD0C900139E54 /* FriendDetailView.swift */,
 				4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */,
 				4CE560F4290387EF001D233A /* GiftHubApp.swift */,
@@ -286,6 +289,7 @@
 				4C68D963290FD4C400139E54 /* GiftSearchView.swift in Sources */,
 				4CE5612029038B7E001D233A /* FriendListView.swift in Sources */,
 				4C68D961290FD0C900139E54 /* FriendDetailView.swift in Sources */,
+				4C17395C2915F5CB00978611 /* ContactsManager.swift in Sources */,
 				4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */,
 				4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */,
 				D96FC4082913A5FF00B3630B /* NotificationView.swift in Sources */,
