@@ -10,34 +10,27 @@ import SwiftUI
 
 struct NotificationView: View{
     @State private var selectedDate = Date()
+    @Binding var isPresented: Bool
     let notify = NotificationHandler()
     
     var body: some View {
         ZStack{
             Color.yellow
-                .opacity(0.2)
+                .opacity(0.4)
             VStack(spacing: 20) {
-                Spacer()
-                
                 DatePicker("Your Friend's Birthday:", selection: $selectedDate, in: Date()...)
                 Button("Schedule alert") {
                     notify.sendNotification(date: selectedDate,
                                             type: "date",
                                             title: "Hello!",
                                             body: "Your Friend's Birthday is coming!")
+                    notify.askPermission()
+                    isPresented = false
                 }
-                .tint(.orange)
-                .padding(30)
+                .tint(.black)
+                .padding(25)
                 .background(.white)
                 .cornerRadius(40)
-                
-                Spacer()
-                Text("Not working?")
-                    .foregroundColor(.gray)
-                    .italic()
-                Button("Request permissions") {
-                    notify.askPermission()
-                }
             }
             .padding()
         }
@@ -45,6 +38,6 @@ struct NotificationView: View{
 }
 struct NotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationView()
+        NotificationView(isPresented: .constant(true))
     }
 }
