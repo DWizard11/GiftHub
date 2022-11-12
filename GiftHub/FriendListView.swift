@@ -54,22 +54,26 @@ struct FriendListView: View {
             .padding([.leading, .trailing,.top])
             
             NavigationView {
-                List {
-                    ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
-                        NavigationLink {
-                            FriendDetailView()
-                        } label: {
-                            Text("\(contact.firstName) \(contact.lastName)")
+                Form {
+                    Section("Others") {
+                        List {
+                            ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
+                                NavigationLink {
+                                    FriendDetailView()
+                                } label: {
+                                    Text("\(contact.firstName) \(contact.lastName)")
+                                }
+                                
+                                
+                            }
                         }
-
-                        
+                        .onAppear() {
+                            self.requestAccess()
+                            
+                    }
                     }
                 }
-                .onAppear() {
-                    self.requestAccess()
-                    
             }
-        }
             
             
         }

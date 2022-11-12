@@ -30,6 +30,7 @@ let color4 = Color(red: 255/255, green: 255/255, blue: 109/255)
 
 struct HomeCalendarView: View {
     
+    @State var isSheetShown = false
     @State private var date = Date()
     
     var body: some View {
@@ -52,6 +53,15 @@ struct HomeCalendarView: View {
                     .background(.white)
                     .padding()
                 
+                    .background(color3)
+                Button(role: .none){
+                    isSheetShown = true
+                } label: {
+                    Text("Add a Reminder")
+                    Text(Image(systemName: "plus.circle.fill"))
+                        .font(.system(size: 30))
+                        .foregroundColor(.yellow)
+                }
                 ZStack{
                     RoundedRectangle(cornerRadius: 30)
                         .foregroundColor(color3)
@@ -70,6 +80,9 @@ struct HomeCalendarView: View {
                     }
                 }
             }
+        }
+        .sheet(isPresented: $isSheetShown){
+            NotificationView(isPresented: $isSheetShown)
         }
     }
 }
