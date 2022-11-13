@@ -32,6 +32,6 @@ struct NewGiftIdeaView: View {
 
 struct NewGiftIdeaView_Previews: PreviewProvider {
     static var previews: some View {
-        NewFriendViewGiftIdeaView(friendviewgiftideas: .constant([]))
+        NewGiftIdeaView(friendviewgiftideas: .constant([]))
     }
 }

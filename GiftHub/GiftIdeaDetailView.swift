@@ -29,6 +29,6 @@ struct GiftIdeaDetailView: View {
 
 struct GiftIdeaDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendViewGiftIdeaDetailView(friendviewgiftidea: .constant(FriendViewGiftIdea(title: "Cake")))
+        GiftIdeaDetailView(friendviewgiftidea: .constant(FriendViewGiftIdea(title: "Cake")))
     }
 }

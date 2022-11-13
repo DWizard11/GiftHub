@@ -20,7 +20,7 @@ struct MainGiftIdeaView: View {
             List {
                 ForEach($friendviewgiftideas) { $friendviewgiftidea in
                     NavigationLink {
-                        FriendViewGiftIdeaDetailView(friendviewgiftidea: $friendviewgiftidea)
+                        GiftIdeaDetailView(friendviewgiftidea: $friendviewgiftidea)
                     } label: {
                         HStack{
                             Image(systemName: friendviewgiftidea.hasBeenBought ? "checkmark.circle.fill" : "circle")
@@ -52,7 +52,7 @@ struct MainGiftIdeaView: View {
             }
         }
         .sheet(isPresented: $isSheetPresented) {
-            NewFriendViewGiftIdeaView(friendviewgiftideas: $friendviewgiftideas)
+            NewGiftIdeaView(friendviewgiftideas: $friendviewgiftideas)
         }
     }
 }
