@@ -23,7 +23,7 @@ struct NotificationView: View{
                     notify.sendNotification(date: selectedDate,
                                             type: "date",
                                             title: "Hello!",
-                                            body: "Your Friend's Birthday is coming!")
+                                            body: "It's your Friend's Birthday!")
                     notify.askPermission()
                     isPresented = false
                 }
