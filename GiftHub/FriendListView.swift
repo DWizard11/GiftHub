@@ -77,6 +77,7 @@ struct FriendListView: View {
                                 } label: {
                                     if contact.isStarred == false {
                                         Image(systemName: "star")
+                                           
                                         Text("\(contact.firstName) \(contact.lastName)")
                                     }
                                     
