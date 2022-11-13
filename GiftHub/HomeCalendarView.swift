@@ -39,7 +39,7 @@ struct HomeCalendarView: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack{
-                    Text("Birthday Calendar")
+                    Text("Birthday")
                         .font(.largeTitle)
                         .bold()
                     Image(systemName: "plus.circle.fill")
@@ -47,13 +47,20 @@ struct HomeCalendarView: View {
                         .foregroundColor(.yellow)
                     
                 }
-                DatePicker("Enter your birthday", selection: $date)
-                    .datePickerStyle(GraphicalDatePickerStyle())
-                    .frame(maxHeight: 400)
-                    .background(.white)
-                    .padding()
                 
-                    .background(color3)
+                VStack{
+                    Text("")
+                    Text("Upcoming Birthdays!")
+                        .font(.largeTitle)
+                        .bold()
+                    RoundedRectangle(cornerRadius: 30)
+                        .foregroundColor(color4)
+                        .frame(width: 1000, height: 70)
+                    RoundedRectangle(cornerRadius: 30)
+                        .foregroundColor(color4)
+                        .padding()
+                        .frame(width: 1000, height: 100)
+                }
                 Button(role: .none){
                     isSheetShown = true
                 } label: {
@@ -61,23 +68,6 @@ struct HomeCalendarView: View {
                     Text(Image(systemName: "plus.circle.fill"))
                         .font(.system(size: 30))
                         .foregroundColor(.yellow)
-                }
-                ZStack{
-                    RoundedRectangle(cornerRadius: 30)
-                        .foregroundColor(color3)
-                        .padding()
-                    VStack{
-                        Text("Upcoming Birthdays!")
-                            .font(.largeTitle)
-                            .bold()
-                            .padding()
-                        RoundedRectangle(cornerRadius: 30)
-                            .foregroundColor(color4)
-                            .padding()
-                        RoundedRectangle(cornerRadius: 30)
-                            .foregroundColor(color4)
-                            .padding()
-                    }
                 }
             }
         }
@@ -92,4 +82,3 @@ struct HomeCalendarView_Previews: PreviewProvider {
         HomeCalendarView()
     }
 }
-

@@ -16,7 +16,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Homepage", systemImage: "house.fill")
                 }
-            FriendListView(contact: ContactInfo.init(firstName: "", lastName: ""))
+            FriendListView(contact: ContactInfo.init(firstName: "", lastName: "", isStarred: false))
                 .tabItem {
                     Label("Friends Search", systemImage: "person.fill")
                 }

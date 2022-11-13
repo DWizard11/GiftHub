@@ -12,9 +12,9 @@ import Contacts
 
 struct FriendListView: View {
     
-    var contact: ContactInfo
+    @State var contact: ContactInfo
     @State private var searchText = ""
-    @State private var contacts = [ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil)]
+    @State private var contacts = [ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil, isStarred: false)]
     @State private var showCancelButton: Bool = false
     
     
@@ -55,13 +55,34 @@ struct FriendListView: View {
             
             NavigationView {
                 Form {
+                    Section("Starred") {
+                        List {
+                            ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
+                                NavigationLink {
+                                    FriendDetailView()
+                                } label: {
+                                    Image(systemName: "star.fill")
+                                    Text("\(contact.firstName) \(contact.lastName)")
+                                }
+                                
+                                
+                            }
+                        }
+                    }
                     Section("Others") {
                         List {
                             ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
                                 NavigationLink {
                                     FriendDetailView()
                                 } label: {
-                                    Text("\(contact.firstName) \(contact.lastName)")
+                                    if contact.isStarred == false {
+                                        Image(systemName: "star")
+                                            .onTapGesture {
+                                                contact.isStarred.toggle()
+                                            }
+                                        Text("\(contact.firstName) \(contact.lastName)")
+                                    }
+                                    
                                 }
                                 
                                 
@@ -112,7 +133,7 @@ struct FriendListView: View {
 
 struct FriendListView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendListView(contact: ContactInfo.init(firstName: "", lastName: ""))
+        FriendListView(contact: ContactInfo.init(firstName: "", lastName: "", isStarred: false))
     }
 }
 
