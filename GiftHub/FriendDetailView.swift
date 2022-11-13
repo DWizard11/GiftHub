@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Contacts
 
 struct FriendDetailView: View {
     
@@ -13,12 +14,13 @@ struct FriendDetailView: View {
     @State var dates = ["1 day", "4 days", "1 week", "1 month"]
     @State var selectedDate = "1 week"
     @State var friendname = ""
+    @State private var contacts = [ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil, isStarred: false)]
     
     var body: some View {
         NavigationView {
             Form {
                 Section("Friend Name") {
-                    TextField("Friend Name", text: $friendname)
+                    Text(contacts.firstName)
                 }
                 Section("Friend Birthday") {
                     TextField("Birthday", text: $friendbirthday)

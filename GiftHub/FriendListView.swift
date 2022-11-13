@@ -77,9 +77,6 @@ struct FriendListView: View {
                                 } label: {
                                     if contact.isStarred == false {
                                         Image(systemName: "star")
-                                            .onTapGesture {
-                                                contact.isStarred.toggle()
-                                            }
                                         Text("\(contact.firstName) \(contact.lastName)")
                                     }
                                     
