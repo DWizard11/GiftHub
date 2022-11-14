@@ -33,16 +33,6 @@ struct FriendDetailView: View {
                     }
                 }
                 //
-                Section("Friend Likings") {
-                    NavigationLink("Add Friend Likings") {
-                        MainFriendLikingView()
-                    }
-                }
-                Section("Friend Dislikes") {
-                    NavigationLink("Add Friend Dislikes") {
-                        MainFriendDislikesView()
-                    }
-                }
                 Section("Gift Ideas") {
                     NavigationLink("Add Gift Ideas") {
                         MainGiftIdeaView()
