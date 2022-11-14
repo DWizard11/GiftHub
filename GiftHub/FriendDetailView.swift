@@ -22,7 +22,7 @@ struct FriendDetailView: View {
                     Text("\(contact.firstName) \(contact.lastName)")
                 }
                 Section("Friend Birthday") {
-                    Text("\(contact.birthday!)")
+                    Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
                     }
                 //
                 Section("Alert") {
