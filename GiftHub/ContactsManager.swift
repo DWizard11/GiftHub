@@ -13,18 +13,19 @@ struct ContactInfo : Identifiable{
     var firstName: String
     var lastName: String
     var phoneNumber: CNPhoneNumber?
-    var isStarred: Bool
+    var birthday: String?
+    var isStarred: Bool 
 }
 
 class FetchContacts {
     
     func fetchingContacts() -> [ContactInfo]{
         var contacts = [ContactInfo]()
-        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
+        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactBirthdayKey]
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
         do {
             try CNContactStore().enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
-                contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, phoneNumber: contact.phoneNumbers.first?.value, isStarred: false))
+                contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, phoneNumber: contact.phoneNumbers.first?.value, birthday: CNContactBirthdayKey, isStarred: false))
             })
         } catch let error {
             print("Failed", error)

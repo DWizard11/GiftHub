@@ -14,16 +14,15 @@ struct FriendDetailView: View {
     @State var dates = ["1 day", "4 days", "1 week", "1 month"]
     @State var selectedDate = "1 week"
     @State var friendname = ""
-    @State private var contact = ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil, isStarred: false)
+    var contact: ContactInfo
     
     var body: some View {
-        NavigationView {
             Form {
                 Section("Friend Name") {
-                    Text(contact.firstName)
+                    Text("\(contact.firstName) \(contact.lastName)")
                 }
                 Section("Friend Birthday") {
-                    TextField("Birthday", text: $friendbirthday)
+                    Text("\(contact.birthday!)")
                     }
                 //
                 Section("Alert") {
@@ -51,13 +50,13 @@ struct FriendDetailView: View {
                 }
                 // 
             }
-        }
+        
     }
 }
 
 
 struct FriendDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendDetailView()
+        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true))
     }
 }

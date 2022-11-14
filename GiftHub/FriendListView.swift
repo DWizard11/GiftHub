@@ -14,54 +14,56 @@ struct FriendListView: View {
     
     @State var contact: ContactInfo
     @State private var searchText = ""
-    @State private var contacts = [ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil, isStarred: false)]
+    @State public var contacts = [ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil, isStarred: false)]
     @State private var showCancelButton: Bool = false
+    @State private var showContacts = true
     
     
     var body: some View {
-        VStack {
-            HStack {
+        NavigationView {
+            VStack {
                 HStack {
-                    //search bar magnifying glass image
-                    Image(systemName: "magnifyingglass").foregroundColor(.secondary)
+                    HStack {
+                        //search bar magnifying glass image
+                        Image(systemName: "magnifyingglass").foregroundColor(.secondary)
+                        
+                        //search bar text field
+                        TextField("Search", text: self.$searchText, onEditingChanged: { isEditing in
+                            self.showCancelButton = true
+                        })
+                        
+                        // x Button
+                        Button(action: {
+                            self.searchText = ""
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.secondary)
+                                .opacity(self.searchText == "" ? 0 : 1)
+                        }
+                    }
+                    .padding(8)
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(8)
                     
-                    //search bar text field
-                    TextField("Search", text: self.$searchText, onEditingChanged: { isEditing in
-                        self.showCancelButton = true
-                    })
-                    
-                    // x Button
-                    Button(action: {
-                        self.searchText = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.secondary)
-                            .opacity(self.searchText == "" ? 0 : 1)
+                    // Cancel Button
+                    if self.showCancelButton  {
+                        Button("Cancel") {
+                            self.searchText = ""
+                            self.showCancelButton = false
+                        }
                     }
                 }
-                .padding(8)
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(8)
+                .padding([.leading, .trailing,.top])
                 
-                // Cancel Button
-                if self.showCancelButton  {
-                    Button("Cancel") {
-                        self.searchText = ""
-                        self.showCancelButton = false
-                    }
-                }
-            }
-            .padding([.leading, .trailing,.top])
-            
-            NavigationView {
+                
                 Form {
                     Section("Starred") {
                         List {
                             ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
-                                NavigationLink {
-                                    FriendDetailView()
-                                } label: {
-                                    if contact.isStarred == true {
+                                if contact.isStarred {
+                                    NavigationLink {
+                                        FriendDetailView(contact: contact)
+                                    } label: {
                                         Image(systemName: "star.fill")
                                             .onTapGesture {
                                                 let contactIndex = self.contacts.firstIndex {
@@ -69,21 +71,19 @@ struct FriendListView: View {
                                                 }!
                                                 contacts[contactIndex].isStarred.toggle()
                                             }
-                                        
                                         Text("\(contact.firstName) \(contact.lastName)")
+                                        Spacer()
                                     }
-                                    
                                 }
-                                
-                                
                             }
                         }
+                        
                     }
                     Section("Others") {
                         List {
                             ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
                                 NavigationLink {
-                                    FriendDetailView()
+                                    FriendDetailView(contact: contact)
                                 } label: {
                                     if contact.isStarred == false {
                                         Image(systemName: "star")
@@ -95,21 +95,15 @@ struct FriendListView: View {
                                             }
                                         Text("\(contact.firstName) \(contact.lastName)")
                                     }
-                                    
                                 }
-                                
-                                
                             }
                         }
                         .onAppear() {
                             self.requestAccess()
-                            
-                    }
+                        }
                     }
                 }
             }
-            
-            
         }
         
     }
