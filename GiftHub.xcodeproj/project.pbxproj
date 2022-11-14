@@ -19,6 +19,12 @@
 		4CE56111290387F0001D233A /* GiftHubUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE56110290387F0001D233A /* GiftHubUITests.swift */; };
 		4CE56113290387F0001D233A /* GiftHubUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE56112290387F0001D233A /* GiftHubUITestsLaunchTests.swift */; };
 		4CE5612029038B7E001D233A /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5611F29038B7E001D233A /* FriendListView.swift */; };
+		510663D52922A3C5001F201A /* FriendGiftIdeaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663D42922A3C5001F201A /* FriendGiftIdeaDetailView.swift */; };
+		510663D72922A3E9001F201A /* NewLikingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663D62922A3E9001F201A /* NewLikingView.swift */; };
+		510663D92922A408001F201A /* FriendDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663D82922A408001F201A /* FriendDetailManager.swift */; };
+		510663DB2922A43D001F201A /* FriendLiking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663DA2922A43D001F201A /* FriendLiking.swift */; };
+		510663DD2922A451001F201A /* FriendDislikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663DC2922A451001F201A /* FriendDislikes.swift */; };
+		510663DF2922A469001F201A /* FriendGiftIdeas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663DE2922A469001F201A /* FriendGiftIdeas.swift */; };
 		D90F43C82921228E0068915F /* CalenderUpdateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F43C72921228E0068915F /* CalenderUpdateApp.swift */; };
 		D90F43CC292123620068915F /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F43CB292123620068915F /* CalenderView.swift */; };
 		D96FC4062913A5DC00B3630B /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96FC4052913A5DC00B3630B /* NotificationHandler.swift */; };
@@ -59,6 +65,12 @@
 		4CE56110290387F0001D233A /* GiftHubUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHubUITests.swift; sourceTree = "<group>"; };
 		4CE56112290387F0001D233A /* GiftHubUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHubUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4CE5611F29038B7E001D233A /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
+		510663D42922A3C5001F201A /* FriendGiftIdeaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendGiftIdeaDetailView.swift; sourceTree = "<group>"; };
+		510663D62922A3E9001F201A /* NewLikingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLikingView.swift; sourceTree = "<group>"; };
+		510663D82922A408001F201A /* FriendDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailManager.swift; sourceTree = "<group>"; };
+		510663DA2922A43D001F201A /* FriendLiking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLiking.swift; sourceTree = "<group>"; };
+		510663DC2922A451001F201A /* FriendDislikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDislikes.swift; sourceTree = "<group>"; };
+		510663DE2922A469001F201A /* FriendGiftIdeas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendGiftIdeas.swift; sourceTree = "<group>"; };
 		D90F43C72921228E0068915F /* CalenderUpdateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderUpdateApp.swift; sourceTree = "<group>"; };
 		D90F43CB292123620068915F /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		D96FC4052913A5DC00B3630B /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
@@ -160,6 +172,12 @@
 			isa = PBXGroup;
 			children = (
 				4C68D960290FD0C900139E54 /* FriendDetailView.swift */,
+				510663D42922A3C5001F201A /* FriendGiftIdeaDetailView.swift */,
+				510663D62922A3E9001F201A /* NewLikingView.swift */,
+				510663D82922A408001F201A /* FriendDetailManager.swift */,
+				510663DA2922A43D001F201A /* FriendLiking.swift */,
+				510663DC2922A451001F201A /* FriendDislikes.swift */,
+				510663DE2922A469001F201A /* FriendGiftIdeas.swift */,
 			);
 			path = FriendDetailView;
 			sourceTree = "<group>";
@@ -295,16 +313,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CE560F7290387EF001D233A /* ContentView.swift in Sources */,
+				510663DB2922A43D001F201A /* FriendLiking.swift in Sources */,
 				D96FC4062913A5DC00B3630B /* NotificationHandler.swift in Sources */,
 				4C68D963290FD4C400139E54 /* GiftSearchView.swift in Sources */,
 				4CE5612029038B7E001D233A /* FriendListView.swift in Sources */,
 				4C68D961290FD0C900139E54 /* FriendDetailView.swift in Sources */,
 				4C17395C2915F5CB00978611 /* ContactsManager.swift in Sources */,
+				510663D92922A408001F201A /* FriendDetailManager.swift in Sources */,
 				D90F43C82921228E0068915F /* CalenderUpdateApp.swift in Sources */,
+				510663DF2922A469001F201A /* FriendGiftIdeas.swift in Sources */,
 				4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */,
+				510663D52922A3C5001F201A /* FriendGiftIdeaDetailView.swift in Sources */,
 				D90F43CC292123620068915F /* CalenderView.swift in Sources */,
 				4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */,
 				D96FC4082913A5FF00B3630B /* NotificationView.swift in Sources */,
+				510663D72922A3E9001F201A /* NewLikingView.swift in Sources */,
+				510663DD2922A451001F201A /* FriendDislikes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
