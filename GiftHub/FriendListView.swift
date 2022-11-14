@@ -68,7 +68,9 @@ struct FriendListView: View {
                                             let contactIndex = self.contacts.firstIndex {
                                                 $0.id == contact.id
                                             }!
-                                            contacts[contactIndex].isStarred.toggle()
+                                            withAnimation {
+                                                contacts[contactIndex].isStarred.toggle()
+                                            }
                                         }
                                     Text("\(contact.firstName) \(contact.lastName)")
                                     Spacer()

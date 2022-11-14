@@ -1,10 +1,3 @@
-//
-//  HomeCalendarView.swift
-//  GiftHub
-//
-//  Created by Felix Forbes Dimjati on 29/10/22.
-//
-
 import SwiftUI
 
 extension UIColor {
