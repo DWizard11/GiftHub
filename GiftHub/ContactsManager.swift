@@ -13,7 +13,7 @@ struct ContactInfo : Identifiable{
     var firstName: String
     var lastName: String
     var phoneNumber: CNPhoneNumber?
-    var birthday: String?
+    var birthday: DateComponents?
     var isStarred: Bool 
 }
 
@@ -25,7 +25,7 @@ class FetchContacts {
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
         do {
             try CNContactStore().enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
-                contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, phoneNumber: contact.phoneNumbers.first?.value, birthday: CNContactBirthdayKey, isStarred: false))
+                contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, phoneNumber: contact.phoneNumbers.first?.value, birthday: contact.birthday, isStarred: false))
             })
         } catch let error {
             print("Failed", error)

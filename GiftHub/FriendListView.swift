@@ -58,47 +58,47 @@ struct FriendListView: View {
                 
                 Form {
                     Section("Starred") {
-                        List {
-                            ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
-                                if contact.isStarred {
-                                    NavigationLink {
-                                        FriendDetailView(contact: contact)
-                                    } label: {
-                                        Image(systemName: "star.fill")
-                                            .onTapGesture {
-                                                let contactIndex = self.contacts.firstIndex {
-                                                    $0.id == contact.id
-                                                }!
-                                                contacts[contactIndex].isStarred.toggle()
-                                            }
-                                        Text("\(contact.firstName) \(contact.lastName)")
-                                        Spacer()
-                                    }
-                                }
-                            }
-                        }
-                        
-                    }
-                    Section("Others") {
-                        List {
-                            ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
+                        ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
+                            if contact.isStarred {
                                 NavigationLink {
                                     FriendDetailView(contact: contact)
                                 } label: {
-                                    if contact.isStarred == false {
+                                    Image(systemName: "star.fill")
+                                        .onTapGesture {
+                                            let contactIndex = self.contacts.firstIndex {
+                                                $0.id == contact.id
+                                            }!
+                                            contacts[contactIndex].isStarred.toggle()
+                                        }
+                                    Text("\(contact.firstName) \(contact.lastName)")
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }
+                    
+                    Section("Others") {
+                        List {
+                            ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
+                                if !contact.isStarred {
+                                    NavigationLink {
+                                        FriendDetailView(contact: contact)
+                                    } label: {
                                         Image(systemName: "star")
                                             .onTapGesture {
                                                 let contactIndex = self.contacts.firstIndex {
                                                     $0.id == contact.id
                                                 }!
-                                                contacts[contactIndex].isStarred.toggle()
+                                                withAnimation {
+                                                    contacts[contactIndex].isStarred.toggle()
+                                                }
                                             }
                                         Text("\(contact.firstName) \(contact.lastName)")
                                     }
                                 }
                             }
                         }
-                        .onAppear() {
+                        .onAppear {
                             self.requestAccess()
                         }
                     }
