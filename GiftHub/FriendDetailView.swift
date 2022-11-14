@@ -14,17 +14,16 @@ struct FriendDetailView: View {
     @State var dates = ["1 day", "4 days", "1 week", "1 month"]
     @State var selectedDate = "1 week"
     @State var friendname = ""
-    @State private var contacts = [ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil, isStarred: false)]
+    @State private var contact = ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil, isStarred: false)
     
     var body: some View {
         NavigationView {
             Form {
                 Section("Friend Name") {
-                    Text(contacts.firstName)
+                    Text(contact.firstName)
                 }
                 Section("Friend Birthday") {
                     TextField("Birthday", text: $friendbirthday)
-                       
                     }
                 //
                 Section("Alert") {
@@ -50,7 +49,7 @@ struct FriendDetailView: View {
                         MainGiftIdeaView()
                     }
                 }
-                //
+                // 
             }
         }
     }

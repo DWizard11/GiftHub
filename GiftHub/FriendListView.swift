@@ -61,8 +61,18 @@ struct FriendListView: View {
                                 NavigationLink {
                                     FriendDetailView()
                                 } label: {
-                                    Image(systemName: "star.fill")
-                                    Text("\(contact.firstName) \(contact.lastName)")
+                                    if contact.isStarred == true {
+                                        Image(systemName: "star.fill")
+                                            .onTapGesture {
+                                                let contactIndex = self.contacts.firstIndex {
+                                                    $0.id == contact.id
+                                                }!
+                                                contacts[contactIndex].isStarred.toggle()
+                                            }
+                                        
+                                        Text("\(contact.firstName) \(contact.lastName)")
+                                    }
+                                    
                                 }
                                 
                                 
@@ -77,7 +87,12 @@ struct FriendListView: View {
                                 } label: {
                                     if contact.isStarred == false {
                                         Image(systemName: "star")
-                                           
+                                            .onTapGesture {
+                                                let contactIndex = self.contacts.firstIndex {
+                                                    $0.id == contact.id
+                                                }!
+                                                contacts[contactIndex].isStarred.toggle()
+                                            }
                                         Text("\(contact.firstName) \(contact.lastName)")
                                     }
                                     
