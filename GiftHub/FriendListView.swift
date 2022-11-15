@@ -14,7 +14,7 @@ struct FriendListView: View {
     
     @State var contact: ContactInfo
     @State private var searchText = ""
-    @State public var contacts = [ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil, isStarred: false)]
+    @State public var contacts = [ContactInfo.init(firstName: "", lastName: "", isStarred: false)]
     @State private var showCancelButton: Bool = false
     @State private var showContacts = true
     
