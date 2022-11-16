@@ -12,7 +12,7 @@ struct FriendDetailView: View {
     
     @State var friendname = ""
     @State var alertdates = ["1 day", "4 days", "1 week", "2 weeks", "1 month"]
-    @State var relationships = ["Friend", "Parent", "Child", "Sibling", "Wife", "Husband", "In-laws", "Uncle", "Aunt", "Cousin", "Grandparents", "Grandchildren", "Pet", "Myself", "Classmate", "Senior", "Junior", "Colleague", "Boss", "Teacher", "Others" ]
+    @State var relationships = ["Friend", "Parent", "Child", "Sibling", "Wife", "Husband", "In-laws", "Uncle", "Aunt", "Cousin", "Grandparents", "Grandchildren", "Pet", "Myself", "Classmate", "Senior", "Junior", "Colleague", "Boss", "Teacher", "Student", "Others" ]
     @State var selectedAlertDate = "1 week"
     @State var selectedRelationship = "Friend"
     @State var selectedDate = Date()
