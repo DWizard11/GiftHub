@@ -19,7 +19,7 @@ struct GiftSearchView: View {
                 Button(role: .none){
                     ForEach(gifts, id: \.self){
                         gift in
-                        Link(destination: URL(string: "https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/gifts)&field-keywords=&crid=3BOYON3KJVMTJ)")!)
+                        Link("Search on Amazon", destination: URL(string: "https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/gifts)&field-keywords=&crid=3BOYON3KJVMTJ)")!)
                     }
                 } label: {
                     ForEach(gifts, id: \.self) {

@@ -5,6 +5,24 @@
 //  Created by TinkerTanker on 15/11/22.
 //
 import SwiftUI
+import Foundation
+
+struct FriendLiking: Identifiable, Codable {
+    let id = UUID()
+    var title: String
+}
+
+struct FriendDislike: Identifiable, Codable {
+    let id = UUID()
+    var title: String
+}
+
+
+struct FriendGiftIdea: Identifiable, Codable {
+    let id = UUID()
+    var title: String
+    var hasBeenBought = false
+}
 
 struct NewLikingView: View {
     

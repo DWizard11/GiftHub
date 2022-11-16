@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct FriendGiftIdea: Identifiable, Codable {
-    let id = UUID()
-    var title: String
-    var hasBeenBought = false
-}
+//struct FriendGiftIdea: Identifiable, Codable {
+//    let id = UUID()
+ //   var title: String
+//    var hasBeenBought = false
+//}

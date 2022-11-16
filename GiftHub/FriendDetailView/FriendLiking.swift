@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct FriendLiking: Identifiable, Codable {
-    let id = UUID()
-    var title: String
-}
+//struct FriendLiking: Identifiable, Codable {
+   // let id = UUID()
+   // var title: String
+//}
