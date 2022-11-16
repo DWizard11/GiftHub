@@ -16,26 +16,21 @@ struct GiftSearchView: View {
     var body: some View {
         NavigationView {
             List {
-                Button(role: .none){
-                    ForEach(gifts, id: \.self){
-                        gift in
-                        Link("Search on Amazon", destination: URL(string: "https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/gifts)&field-keywords=&crid=3BOYON3KJVMTJ)")!)
-                    }
-                } label: {
-                    ForEach(gifts, id: \.self) {
-                        gift in
-                        HStack {
-                            Text(gift.capitalized)
-                            Spacer()
-                            Image(systemName: "figure.walk")
-                                .foregroundColor(Color.blue)
+                ForEach(gifts, id: \.self){
+                    gift in
+                    Button(role: .none){
+                        Link("Search on Amazon", destination: URL(string: "https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/gift)&field-keywords=&crid=3BOYON3KJVMTJ)")!)
+                    } label: {
+                            HStack {
+                                Text(gift.capitalized)
+                                Spacer()
+                                Image(systemName: "figure.walk")
+                                    .foregroundColor(Color.blue)
+                            }
+                            .padding()
                         }
-                        .padding()
                     }
                 }
-                
-                
-            }
             .searchable(text: $searchText)
             .navigationTitle("Gift Search")
         }
@@ -57,4 +52,5 @@ struct GiftSearchView_Previews: PreviewProvider {
     }
 }
 
+// reference
 //https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/searchquery)&field-keywords=&crid=3BOYON3KJVMTJ
