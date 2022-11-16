@@ -11,19 +11,27 @@ struct GiftSearchView: View {
     
     private var listOfGiftIdeas = giftideas
     @State var searchText = ""
-
+   
+   
     var body: some View {
         NavigationView {
             List {
-                ForEach(gifts, id: \.self) {
-                     gift in
-                    HStack {
-                        Text(gift.capitalized)
-                        Spacer()
-                        Image(systemName: "figure.walk")
-                            .foregroundColor(Color.blue)
+                Button(role: .none){
+                    ForEach(gifts, id: \.self){
+                        gift in
+                        Link(destination: URL(string: "https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/gifts)&field-keywords=&crid=3BOYON3KJVMTJ)")!)
                     }
-                    .padding()
+                } label: {
+                    ForEach(gifts, id: \.self) {
+                        gift in
+                        HStack {
+                            Text(gift.capitalized)
+                            Spacer()
+                            Image(systemName: "figure.walk")
+                                .foregroundColor(Color.blue)
+                        }
+                        .padding()
+                    }
                 }
                 
                 
@@ -42,8 +50,11 @@ struct GiftSearchView: View {
     }
 }
 
+
 struct GiftSearchView_Previews: PreviewProvider {
     static var previews: some View {
         GiftSearchView()
     }
 }
+
+//https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/searchquery)&field-keywords=&crid=3BOYON3KJVMTJ
