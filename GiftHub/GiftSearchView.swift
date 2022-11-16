@@ -9,14 +9,36 @@ import SwiftUI
 
 struct GiftSearchView: View {
     
-    @State private var giftText = ""
-    
+    private var listOfGiftIdeas = giftideas
+    @State var searchText = ""
+
     var body: some View {
         NavigationView {
-            Text("")
+            List {
+                ForEach(gifts, id: \.self) {
+                     gift in
+                    HStack {
+                        Text(gift.capitalized)
+                        Spacer()
+                        Image(systemName: "figure.walk")
+                            .foregroundColor(Color.blue)
+                    }
+                    .padding()
+                }
+                
+                
+            }
+            .searchable(text: $searchText)
+            .navigationTitle("Gift Search")
         }
-        .searchable(text: $giftText)
-        .navigationTitle("Gift Search")
+    }
+    
+    var gifts: [String] {
+        let lcGifts = listOfGiftIdeas.map { $0.lowercased() }
+        
+        return searchText == "" ? lcGifts : lcGifts.filter {
+            $0.contains(searchText.lowercased())
+        }
     }
 }
 

@@ -25,8 +25,8 @@
 		510663DB2922A43D001F201A /* FriendLiking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663DA2922A43D001F201A /* FriendLiking.swift */; };
 		510663DD2922A451001F201A /* FriendDislikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663DC2922A451001F201A /* FriendDislikes.swift */; };
 		510663DF2922A469001F201A /* FriendGiftIdeas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663DE2922A469001F201A /* FriendGiftIdeas.swift */; };
-		D90F43C82921228E0068915F /* CalenderUpdateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F43C72921228E0068915F /* CalenderUpdateApp.swift */; };
 		D90F43CC292123620068915F /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F43CB292123620068915F /* CalenderView.swift */; };
+		D90F43CE2924C52C0068915F /* GiftSearchDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F43CD2924C52C0068915F /* GiftSearchDatabase.swift */; };
 		D96FC4062913A5DC00B3630B /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96FC4052913A5DC00B3630B /* NotificationHandler.swift */; };
 		D96FC4082913A5FF00B3630B /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96FC4072913A5FF00B3630B /* NotificationView.swift */; };
 /* End PBXBuildFile section */
@@ -71,8 +71,8 @@
 		510663DA2922A43D001F201A /* FriendLiking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLiking.swift; sourceTree = "<group>"; };
 		510663DC2922A451001F201A /* FriendDislikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDislikes.swift; sourceTree = "<group>"; };
 		510663DE2922A469001F201A /* FriendGiftIdeas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendGiftIdeas.swift; sourceTree = "<group>"; };
-		D90F43C72921228E0068915F /* CalenderUpdateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderUpdateApp.swift; sourceTree = "<group>"; };
 		D90F43CB292123620068915F /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
+		D90F43CD2924C52C0068915F /* GiftSearchDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSearchDatabase.swift; sourceTree = "<group>"; };
 		D96FC4052913A5DC00B3630B /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		D96FC4072913A5FF00B3630B /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,17 +127,17 @@
 			children = (
 				510663D1292260F4001F201A /* FriendDetailView */,
 				4C68D962290FD4C400139E54 /* GiftSearchView.swift */,
+				D90F43CD2924C52C0068915F /* GiftSearchDatabase.swift */,
 				4C17395B2915F5CB00978611 /* ContactsManager.swift */,
 				4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */,
+				D96FC4072913A5FF00B3630B /* NotificationView.swift */,
+				D96FC4052913A5DC00B3630B /* NotificationHandler.swift */,
 				4CE560F4290387EF001D233A /* GiftHubApp.swift */,
 				4CE560F6290387EF001D233A /* ContentView.swift */,
 				4CE5611F29038B7E001D233A /* FriendListView.swift */,
 				4CE560F8290387F0001D233A /* Assets.xcassets */,
 				4CE560FA290387F0001D233A /* GiftHub.entitlements */,
 				4CE560FB290387F0001D233A /* Preview Content */,
-				D96FC4052913A5DC00B3630B /* NotificationHandler.swift */,
-				D96FC4072913A5FF00B3630B /* NotificationView.swift */,
-				D90F43C72921228E0068915F /* CalenderUpdateApp.swift */,
 				D90F43CB292123620068915F /* CalenderView.swift */,
 			);
 			path = GiftHub;
@@ -314,13 +314,13 @@
 			files = (
 				4CE560F7290387EF001D233A /* ContentView.swift in Sources */,
 				510663DB2922A43D001F201A /* FriendLiking.swift in Sources */,
+				D90F43CE2924C52C0068915F /* GiftSearchDatabase.swift in Sources */,
 				D96FC4062913A5DC00B3630B /* NotificationHandler.swift in Sources */,
 				4C68D963290FD4C400139E54 /* GiftSearchView.swift in Sources */,
 				4CE5612029038B7E001D233A /* FriendListView.swift in Sources */,
 				4C68D961290FD0C900139E54 /* FriendDetailView.swift in Sources */,
 				4C17395C2915F5CB00978611 /* ContactsManager.swift in Sources */,
 				510663D92922A408001F201A /* FriendDetailManager.swift in Sources */,
-				D90F43C82921228E0068915F /* CalenderUpdateApp.swift in Sources */,
 				510663DF2922A469001F201A /* FriendGiftIdeas.swift in Sources */,
 				4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */,
 				510663D52922A3C5001F201A /* FriendGiftIdeaDetailView.swift in Sources */,

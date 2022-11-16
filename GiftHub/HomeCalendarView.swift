@@ -1,15 +1,15 @@
 import SwiftUI
 
-extension UIColor {
-   convenience init(red: Int, green: Int, blue: Int) {
+extension Color {
+    init(red: Int, green: Int, blue: Int) {
        assert(red >= 0 && red <= 255, "Invalid red component")
        assert(green >= 0 && green <= 255, "Invalid green component")
        assert(blue >= 0 && blue <= 255, "Invalid blue component")
 
-       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0)
    }
 
-   convenience init(rgb: Int) {
+    init(rgb: Int) {
        self.init(
            red: (rgb >> 16) & 0xFF,
            green: (rgb >> 8) & 0xFF,
@@ -17,7 +17,7 @@ extension UIColor {
        )
    }
 }
-let color2 = UIColor(red: 255, green: 248, blue: 211)
+let color2 = Color(red: 255, green: 248, blue: 211)
 let color3 = Color(red: 255/255, green: 242/255, blue: 172/255)
 let color4 = Color(red: 255/255, green: 255/255, blue: 109/255)
 
@@ -28,7 +28,7 @@ struct HomeCalendarView: View {
     
     var body: some View {
         ZStack {
-            Color(color2)
+            Color(color2 as! CGColor)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack{
