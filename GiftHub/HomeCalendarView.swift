@@ -28,7 +28,7 @@ struct HomeCalendarView: View {
     
     var body: some View {
         ZStack {
-            Color(color2 as! CGColor)
+            Color(color2)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack{
