@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var date = Date()
-   
+    @StateObject var contactsManager = ContactInfoManager()
+    
     var body: some View {
         TabView {
             HomeCalendarView()
                 .tabItem {
                     Label("Homepage", systemImage: "house.fill")
                 }
-            FriendListView(contact: ContactInfo.init(firstName: "", lastName: "", isStarred: false))
+            FriendListView(contactsManager: ContactInfoManager())
                 .tabItem {
                     Label("Friends Search", systemImage: "person.fill")
                 }

@@ -12,9 +12,8 @@ import Contacts
 
 struct FriendListView: View {
     
-    @State var contact: ContactInfo
+    @ObservedObject var contactsManager: ContactInfoManager
     @State private var searchText = ""
-    @State public var contacts = [ContactInfo.init(firstName: "", lastName: "", isStarred: false)]
     @State private var showCancelButton: Bool = false
     @State private var showContacts = true
     
@@ -58,18 +57,18 @@ struct FriendListView: View {
                 
                 Form {
                     Section("Starred") {
-                        ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
+                        ForEach (self.contactsManager.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
                             if contact.isStarred {
                                 NavigationLink {
                                     FriendDetailView(contact: contact)
                                 } label: {
                                     Image(systemName: "star.fill")
                                         .onTapGesture {
-                                            let contactIndex = self.contacts.firstIndex {
+                                            let contactIndex = self.contactsManager.contacts.firstIndex {
                                                 $0.id == contact.id
                                             }!
                                             withAnimation {
-                                                contacts[contactIndex].isStarred.toggle()
+                                                contactsManager.contacts[contactIndex].isStarred.toggle()
                                             }
                                         }
                                     Text("\(contact.firstName) \(contact.lastName)")
@@ -80,23 +79,21 @@ struct FriendListView: View {
                     }
                     
                     Section("Others") {
-                        List {
-                            ForEach (self.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
-                                if !contact.isStarred {
-                                    NavigationLink {
-                                        FriendDetailView(contact: contact)
-                                    } label: {
-                                        Image(systemName: "star")
-                                            .onTapGesture {
-                                                let contactIndex = self.contacts.firstIndex {
-                                                    $0.id == contact.id
-                                                }!
-                                                withAnimation {
-                                                    contacts[contactIndex].isStarred.toggle()
-                                                }
+                        ForEach (self.contactsManager.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
+                            if !contact.isStarred {
+                                NavigationLink {
+                                    FriendDetailView(contact: contact)
+                                } label: {
+                                    Image(systemName: "star")
+                                        .onTapGesture {
+                                            let contactIndex = self.contactsManager.contacts.firstIndex {
+                                                $0.id == contact.id
+                                            }!
+                                            withAnimation {
+                                                contactsManager.contacts[contactIndex].isStarred.toggle()
                                             }
-                                        Text("\(contact.firstName) \(contact.lastName)")
-                                    }
+                                        }
+                                    Text("\(contact.firstName) \(contact.lastName)")
                                 }
                             }
                         }
@@ -112,7 +109,7 @@ struct FriendListView: View {
     
     func getContacts() {
         DispatchQueue.main.async {
-            self.contacts = FetchContacts().fetchingContacts()
+            self.contactsManager.contacts = FetchContacts().fetchingContacts()
         }
     }
     
@@ -142,7 +139,7 @@ struct FriendListView: View {
 
 struct FriendListView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendListView(contact: ContactInfo.init(firstName: "", lastName: "", isStarred: false))
+        FriendListView(contactsManager: ContactInfoManager())
     }
 }
 
