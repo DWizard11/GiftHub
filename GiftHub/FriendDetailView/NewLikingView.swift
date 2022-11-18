@@ -8,18 +8,18 @@ import SwiftUI
 import Foundation
 
 struct FriendLiking: Identifiable, Codable {
-    let id = UUID()
+    var id = UUID()
     var title: String
 }
 
 struct FriendDislike: Identifiable, Codable {
-    let id = UUID()
+    var id = UUID()
     var title: String
 }
 
 
 struct FriendGiftIdea: Identifiable, Codable {
-    let id = UUID()
+    var id = UUID()
     var title: String
     var hasBeenBought = false
 }

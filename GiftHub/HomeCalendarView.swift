@@ -1,21 +1,21 @@
 import SwiftUI
 
 extension UIColor {
-   convenience init(red: Int, green: Int, blue: Int) {
-       assert(red >= 0 && red <= 255, "Invalid red component")
-       assert(green >= 0 && green <= 255, "Invalid green component")
-       assert(blue >= 0 && blue <= 255, "Invalid blue component")
-
-       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-   }
-
-   convenience init(rgb: Int) {
-       self.init(
-           red: (rgb >> 16) & 0xFF,
-           green: (rgb >> 8) & 0xFF,
-           blue: rgb & 0xFF
-       )
-   }
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
 }
 let color2 = UIColor(red: 255, green: 248, blue: 211)
 let color3 = Color(red: 255/255, green: 242/255, blue: 172/255)
@@ -38,9 +38,14 @@ struct HomeCalendarView: View {
                     Text("Birthday")
                         .font(.largeTitle)
                         .bold()
-                    Image(systemName: "plus.circle.fill")
-                        .font(.system(size: 30))
-                        .foregroundColor(.yellow)
+                    Button(role: .none){
+                        isSheetShown = true
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 30))
+                            .foregroundColor(.yellow)
+                    }
+                    
                     
                 }
                 
@@ -50,145 +55,137 @@ struct HomeCalendarView: View {
                         .font(.largeTitle)
                         .bold()
                     ZStack {
-                                ForEach(weekStore.allWeeks) { week in
-                                    VStack{
-                                        HStack {
-                                            ForEach(0..<7) { index in
-                                                VStack(spacing: 20) {
-                                                    Text(weekStore.dateToString(date: week.date[index], format: "EEE"))
-                                                        .font(.system(size:14))
-                                                        .fontWeight(.semibold)
-                                                        .frame(maxWidth:.infinity)
-                                                    
-                                                    Text(weekStore.dateToString(date: week.date[index], format: "d"))
-                                                        .font(.system(size:14))
-                                                        .frame(maxWidth:.infinity)
-                                                }
-                                                .onTapGesture {
-                                                    // Updating Current Day
-                                                    weekStore.currentDate = week.date[index]
-                                                }
-                                            }
+                        ForEach(weekStore.allWeeks) { week in
+                            VStack{
+                                HStack {
+                                    ForEach(0..<7) { index in
+                                        VStack(spacing: 20) {
+                                            Text(weekStore.dateToString(date: week.date[index], format: "EEE"))
+                                                .font(.system(size:14))
+                                                .fontWeight(.semibold)
+                                                .frame(maxWidth:.infinity)
+                                            
+                                            Text(weekStore.dateToString(date: week.date[index], format: "d"))
+                                                .font(.system(size:14))
+                                                .frame(maxWidth:.infinity)
                                         }
-                                        .frame(width: UIScreen.main.bounds.width)
-                                        .background(
-                                            Rectangle()
-                                                .fill(color4)
-                                        )
+                                        .onTapGesture {
+                                            // Updating Current Day
+                                            weekStore.currentDate = week.date[index]
+                                        }
                                     }
-                                    .offset(x: myXOffset(week.id), y: 0)
-                                    .zIndex(1.0 - abs(distance(week.id)) * 0.1)
-                                    .padding(.horizontal, 20)
+                                }
+                                .frame(width: UIScreen.main.bounds.width)
+                                .background(
+                                    Rectangle()
+                                        .fill(color4)
+                                )
+                            }
+                            .offset(x: myXOffset(week.id), y: 0)
+                            .zIndex(1.0 - abs(distance(week.id)) * 0.1)
+                            .padding(.horizontal, 20)
+                        }
+                    }
+                    .padding()
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                draggingItem = snappedItem + value.translation.width / 400
+                            }
+                            .onEnded { value in
+                                withAnimation {
+                                    if value.predictedEndTranslation.width > 0 {
+                                        draggingItem = snappedItem + 1
+                                    } else {
+                                        draggingItem = snappedItem - 1
+                                    }
+                                    snappedItem = draggingItem
+                                    
+                                    weekStore.update(index: Int(snappedItem))
                                 }
                             }
-                            .padding()
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { value in
-                                        draggingItem = snappedItem + value.translation.width / 400
-                                    }
-                                    .onEnded { value in
-                                        withAnimation {
-                                            if value.predictedEndTranslation.width > 0 {
-                                                draggingItem = snappedItem + 1
-                                            } else {
-                                                draggingItem = snappedItem - 1
-                                            }
-                                            snappedItem = draggingItem
-                                            
-                                            weekStore.update(index: Int(snappedItem))
-                                        }
-                                    }
-                            )
+                    )
+                }
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundColor(color4)
+                        .frame(width: 350, height: 75)
+                    HStack{
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 100, height: 50)
+                        
+                        VStack {
+                            Text("Placehold")
+                            Text("3 Nov 2022")
                         }
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(color4)
-                            .frame(width: 350, height: 75)
-                        HStack{
-                            Circle()
-                                .fill(.white)
-                                .frame(width: 100, height: 50)
-                                    
-                            VStack {
-                                Text("Placehold")
-                                Text("3 Nov 2022")
-                            }
-                            }
-                        }
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(color4)
-                            .frame(width: 350, height: 75)
-                        HStack{
-                            Circle()
-                                .fill(.white)
-                                .frame(width: 100, height: 50)
-                                    
-                            VStack {
-                                Text("Placehold")
-                                Text("3 Nov 2022")
-                            }
-                            }
-                        }
-                    Text("Next Week                                   ")
-                        .font(.title)
-                        .bold()
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(color4)
-                            .frame(width: 350, height: 75)
-                        HStack{
-                            Circle()
-                                .fill(.white)
-                                .frame(width: 100, height: 50)
-                                    
-                            VStack {
-                                Text("Placehold")
-                                Text("3 Nov 2022")
-                            }
-                            }
-                        }
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(color4)
-                            .frame(width: 350, height: 75)
-                        HStack{
-                            Circle()
-                                .fill(.white)
-                                .frame(width: 100, height: 50)
-                                    
-                            VStack {
-                                Text("Placehold")
-                                Text("3 Nov 2022")
-                            }
-                            }
-                        }
-                    Button(role: .none){
-                                    isSheetShown = true
-                                } label: {
-                                    Text("Add a Reminder")
-                                    Text(Image(systemName: "plus.circle.fill"))
-                                        .font(.system(size: 30))
-                                        .foregroundColor(.yellow)
                     }
                 }
-                            }
-        .sheet(isPresented: $isSheetShown){
-            NotificationView(isPresented: $isSheetShown)
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundColor(color4)
+                        .frame(width: 350, height: 75)
+                    HStack{
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 100, height: 50)
+                        
+                        VStack {
+                            Text("Placehold")
+                            Text("3 Nov 2022")
                         }
                     }
-    func distance(_ item: Int) -> Double {
-            return (draggingItem - Double(item)).remainder(dividingBy: Double(weekStore.allWeeks.count))
+                }
+                Text("Next Week                                   ")
+                    .font(.title)
+                    .bold()
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundColor(color4)
+                        .frame(width: 350, height: 75)
+                    HStack{
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 100, height: 50)
+                        
+                        VStack {
+                            Text("Placehold")
+                            Text("3 Nov 2022")
+                        }
+                    }
+                }
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundColor(color4)
+                        .frame(width: 350, height: 75)
+                    HStack{
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 100, height: 50)
+                        
+                        VStack {
+                            Text("Placehold")
+                            Text("3 Nov 2022")
+                        }
+                    }
+                }
+            }
         }
-        
-        func myXOffset(_ item: Int) -> Double {
-            let angle = Double.pi * 2 / Double(weekStore.allWeeks.count) * distance(item)
-            return sin(angle) * 200
+        .sheet(isPresented: $isSheetShown){
+            NotificationView(isPresented: $isSheetShown)
         }
-        
     }
-                    
+    func distance(_ item: Int) -> Double {
+        return (draggingItem - Double(item)).remainder(dividingBy: Double(weekStore.allWeeks.count))
+    }
+    
+    func myXOffset(_ item: Int) -> Double {
+        let angle = Double.pi * 2 / Double(weekStore.allWeeks.count) * distance(item)
+        return sin(angle) * 200
+    }
+    
+}
+
 
 struct HomeCalendarView_Previews: PreviewProvider {
     static var previews: some View {
@@ -287,7 +284,7 @@ class WeekStore : ObservableObject {
     func fetchCurrentWeek(){
         let today = currentDate
         var calendar = Calendar(identifier: .gregorian)
-    
+        
         calendar.firstWeekday = 7
         let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
         
