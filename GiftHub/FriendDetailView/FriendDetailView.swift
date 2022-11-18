@@ -146,7 +146,7 @@ struct FriendDetailView: View {
 
 struct FriendDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true)
+        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true, identifier: "")
         )
     }
 }

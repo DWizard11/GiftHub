@@ -125,6 +125,7 @@
 		4CE560F3290387EF001D233A /* GiftHub */ = {
 			isa = PBXGroup;
 			children = (
+				4CE560FA290387F0001D233A /* GiftHub.entitlements */,
 				510663FE2927193B001F201A /* GiftSearchBar */,
 				510663FC292718DE001F201A /* NotificationView */,
 				510663D1292260F4001F201A /* FriendDetailView */,
@@ -133,7 +134,6 @@
 				4CE560F4290387EF001D233A /* GiftHubApp.swift */,
 				4CE560F6290387EF001D233A /* ContentView.swift */,
 				4CE560F8290387F0001D233A /* Assets.xcassets */,
-				4CE560FA290387F0001D233A /* GiftHub.entitlements */,
 				4CE560FB290387F0001D233A /* Preview Content */,
 				D90F43CB292123620068915F /* CalenderView.swift */,
 			);

@@ -13,18 +13,31 @@ struct ContactInfo : Identifiable, Codable{
     var firstName: String
     var lastName: String
     var birthday: DateComponents?
-    var isStarred: Bool 
+    var isStarred: Bool
+    var identifier: String
 }
 
 class FetchContacts {
     
-    func fetchingContacts() -> [ContactInfo]{
-        var contacts = [ContactInfo]()
-        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactBirthdayKey]
+    func fetchingContacts(currentContacts: [ContactInfo]) -> [ContactInfo]{
+        var contacts = currentContacts
+        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactBirthdayKey,
+        CNContactIdentifierKey]
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
         do {
             try CNContactStore().enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
-                contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, birthday: contact.birthday, isStarred: false))
+               var isNew = true
+                for person in currentContacts {
+                    if contact.identifier == person.identifier{
+                        isNew = false
+                        
+                    }
+                }
+                
+                if isNew {
+                    contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, birthday: contact.birthday, isStarred: false, identifier: contact.identifier))
+                }
+                
             })
         } catch let error {
             print("Failed", error)

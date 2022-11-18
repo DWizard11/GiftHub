@@ -90,16 +90,16 @@ struct FriendListView: View {
                                                 $0.id == contact.id
                                             }!
                                             withAnimation {
-                                                contactsManager.contacts[contactIndex].isStarred.toggle()
+                                                self.contactsManager.contacts[contactIndex].isStarred.toggle()
                                             }
                                         }
                                     Text("\(contact.firstName) \(contact.lastName)")
                                 }
                             }
                         }
-                        .onAppear {
-                            self.requestAccess()
-                        }
+                    }
+                    .onAppear {
+                        self.requestAccess()
                     }
                 }
             }
@@ -109,11 +109,13 @@ struct FriendListView: View {
     
     func getContacts() {
         DispatchQueue.main.async {
-            self.contactsManager.contacts = FetchContacts().fetchingContacts()
+            self.contactsManager.contacts = FetchContacts().fetchingContacts(currentContacts: contactsManager.contacts)
+            print("Test")
         }
     }
     
     func requestAccess() {
+        print("Test 2")
         let store = CNContactStore()
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .authorized:
