@@ -81,8 +81,7 @@ struct HomeCalendarView: View {
                                     .padding(.horizontal, 20)
                                 }
                             }
-                            .frame(maxHeight:.infinity , alignment : .top)
-                            .padding(.top,50)
+                            .padding()
                             .gesture(
                                 DragGesture()
                                     .onChanged { value in
