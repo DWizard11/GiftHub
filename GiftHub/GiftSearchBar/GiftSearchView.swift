@@ -27,8 +27,8 @@ struct GiftSearchView: View {
                             }
                             .padding()
                         })
-                        }
                     }
+                }
             .searchable(text: $searchText)
             .navigationTitle("Gift Search")
         }
