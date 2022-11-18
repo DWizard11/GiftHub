@@ -42,7 +42,11 @@ struct FriendDetailView: View {
              //           Text("Birthday")
              //           DatePicker("", selection: $selectedDate, displayedComponents: .date)
              //       }
-                    Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
+                    HStack {
+                        Text("Birthday")
+                        Spacer()
+                        Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
+                    }
                     
                     Picker("Age", selection: $selectedAge) {
                         ForEach(1 ... 99, id: \.self) {
