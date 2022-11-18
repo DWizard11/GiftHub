@@ -18,9 +18,7 @@ struct GiftSearchView: View {
             List {
                 ForEach(gifts, id: \.self){
                     gift in
-                    Button(role: .none){
-                        Link("Search on Amazon", destination: URL(string: "https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/gift)&field-keywords=&crid=3BOYON3KJVMTJ)")!)
-                    } label: {
+                        Link(destination: URL(string: "https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/gift)&field-keywords=&crid=3BOYON3KJVMTJ)")!,label: {
                             HStack {
                                 Text(gift.capitalized)
                                 Spacer()
@@ -28,9 +26,9 @@ struct GiftSearchView: View {
                                     .foregroundColor(Color.blue)
                             }
                             .padding()
+                        })
                         }
                     }
-                }
             .searchable(text: $searchText)
             .navigationTitle("Gift Search")
         }
