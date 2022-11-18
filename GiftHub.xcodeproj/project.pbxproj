@@ -125,16 +125,13 @@
 		4CE560F3290387EF001D233A /* GiftHub */ = {
 			isa = PBXGroup;
 			children = (
+				510663FE2927193B001F201A /* GiftSearchBar */,
+				510663FC292718DE001F201A /* NotificationView */,
 				510663D1292260F4001F201A /* FriendDetailView */,
-				4C68D962290FD4C400139E54 /* GiftSearchView.swift */,
-				D90F43CD2924C52C0068915F /* GiftSearchDatabase.swift */,
 				4C17395B2915F5CB00978611 /* ContactsManager.swift */,
 				4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */,
-				D96FC4072913A5FF00B3630B /* NotificationView.swift */,
-				D96FC4052913A5DC00B3630B /* NotificationHandler.swift */,
 				4CE560F4290387EF001D233A /* GiftHubApp.swift */,
 				4CE560F6290387EF001D233A /* ContentView.swift */,
-				4CE5611F29038B7E001D233A /* FriendListView.swift */,
 				4CE560F8290387F0001D233A /* Assets.xcassets */,
 				4CE560FA290387F0001D233A /* GiftHub.entitlements */,
 				4CE560FB290387F0001D233A /* Preview Content */,
@@ -178,8 +175,27 @@
 				510663DA2922A43D001F201A /* FriendLiking.swift */,
 				510663DC2922A451001F201A /* FriendDislikes.swift */,
 				510663DE2922A469001F201A /* FriendGiftIdeas.swift */,
+				4CE5611F29038B7E001D233A /* FriendListView.swift */,
 			);
 			path = FriendDetailView;
+			sourceTree = "<group>";
+		};
+		510663FC292718DE001F201A /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				D96FC4072913A5FF00B3630B /* NotificationView.swift */,
+				D96FC4052913A5DC00B3630B /* NotificationHandler.swift */,
+			);
+			path = NotificationView;
+			sourceTree = "<group>";
+		};
+		510663FE2927193B001F201A /* GiftSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				4C68D962290FD4C400139E54 /* GiftSearchView.swift */,
+				D90F43CD2924C52C0068915F /* GiftSearchDatabase.swift */,
+			);
+			path = GiftSearchBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
