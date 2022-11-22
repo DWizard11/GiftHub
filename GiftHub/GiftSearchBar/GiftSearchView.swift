@@ -25,7 +25,7 @@ struct GiftSearchView: View {
                                 Image(systemName: "figure.walk")
                                     .foregroundColor(Color.blue)
                             }
-                            .padding()
+                            //.padding()
                         })
                     }
                 }
