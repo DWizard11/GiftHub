@@ -21,6 +21,10 @@ struct ContentView: View {
                 .tabItem {
                     Label("Friends Search", systemImage: "person.fill")
                 }
+            GiftGuideView()
+                .tabItem {
+                    Label("Gift Guides", systemImage: "book")
+                }
             GiftSearchView()
                 .tabItem {
                     Label("Gift Search", systemImage: "magnifyingglass")
