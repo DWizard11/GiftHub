@@ -14,9 +14,27 @@ struct GiftGuideView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section("Age") {
+                Section("For different ages") {
                     NavigationLink("Gifts for Teens") {
                         GiftGuideOneView()
+                    }
+                }
+                
+                Section("For different festivities") {
+                    NavigationLink("Christmas") {
+                        
+                    }
+                    NavigationLink("Chinese New Year") {
+                        
+                    }
+                }
+                
+                Section("Where to find gifts") {
+                    NavigationLink("Places in Singapore") {
+                        
+                    }
+                    NavigationLink("Online Websites") {
+                        
                     }
                 }
             
