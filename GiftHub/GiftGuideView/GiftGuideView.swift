@@ -14,7 +14,7 @@ struct GiftGuideView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section("For different ages") {
+                Section("For Teens") {
                     NavigationLink("Gifts for Teens") {
                         GiftGuideOneView()
                     }

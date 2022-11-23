@@ -10,24 +10,9 @@ import SwiftUI
 struct GiftGuideOneScrollView: View {
     var body: some View {
         VStack {
-        //    HStack {
-        //        Text(categoryName)
-       //             .font(.system(size: 20, weight: .heavy))
-        //            .padding()//.vertical)
-                //     .padding(.horizontal, 12)
-                // .background(Color.green)
-        //            .foregroundColor(.black)
-                //    .opacity(0.7)
-        //            .cornerRadius(6)
-              //      .bold()
-        //
-         //       Spacer()
-       //     }
-       //     .padding(.horizontal)
-      //      .padding(.top)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 16) {
-                    ForEach(GGgifts) { num in
+                    ForEach(GGgiftsone) { num in
                         GeometryReader { proxy in
                             let scale = getScale(proxy: proxy)
                             VStack(spacing: 8) {
