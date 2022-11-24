@@ -18,7 +18,7 @@ extension UIColor {
     }
 }
 let color2 = UIColor(red: 255, green: 248, blue: 211)
-let color3 = Color(red: 255/255, green: 242/255, blue: 172/255)
+let color3 = Color(red: 255/255, green: 240/255, blue: 172/255)
 let color4 = Color(red: 255/255, green: 255/255, blue: 109/255)
 
 struct HomeCalendarView: View {
@@ -78,7 +78,8 @@ struct HomeCalendarView: View {
                                 .frame(width: UIScreen.main.bounds.width)
                                 .background(
                                     Rectangle()
-                                        .fill(color4)
+                                        .fill(color3)
+                                       
                                 )
                             }
                             .offset(x: myXOffset(week.id), y: 0)
@@ -86,6 +87,7 @@ struct HomeCalendarView: View {
                             .padding(.horizontal, 20)
                         }
                     }
+                    .padding()
                     .padding()
                     .gesture(
                         DragGesture()
@@ -108,7 +110,7 @@ struct HomeCalendarView: View {
                 }
                 ZStack{
                     RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(color4)
+                        .foregroundColor(color3)
                         .frame(width: 350, height: 75)
                     HStack{
                         Circle()
@@ -123,7 +125,7 @@ struct HomeCalendarView: View {
                 }
                 ZStack{
                     RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(color4)
+                        .foregroundColor(color3)
                         .frame(width: 350, height: 75)
                     HStack{
                         Circle()
@@ -141,7 +143,7 @@ struct HomeCalendarView: View {
                     .bold()
                 ZStack{
                     RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(color4)
+                        .foregroundColor(color3)
                         .frame(width: 350, height: 75)
                     HStack{
                         Circle()
@@ -156,7 +158,7 @@ struct HomeCalendarView: View {
                 }
                 ZStack{
                     RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(color4)
+                        .foregroundColor(color3)
                         .frame(width: 350, height: 75)
                     HStack{
                         Circle()
