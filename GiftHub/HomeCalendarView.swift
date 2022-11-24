@@ -28,6 +28,7 @@ struct HomeCalendarView: View {
     @StateObject var weekStore = WeekStore()
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
+    @ObservedObject var contactsManager: ContactInfoManager
     
     var body: some View {
         ZStack {
@@ -48,126 +49,35 @@ struct HomeCalendarView: View {
                     
                     
                 }
-                
+                DatePicker("Enter your birthday", selection: $date)
+                                     .datePickerStyle(GraphicalDatePickerStyle())
+                                     .frame(maxHeight: 400)
+                                     .background(.white)
+                                     .padding()
                 VStack{
                     Text("")
                     Text("Upcoming Birthdays!")
                         .font(.largeTitle)
                         .bold()
-                    ZStack {
-                        ForEach(weekStore.allWeeks) { week in
-                            VStack{
-                                HStack {
-                                    ForEach(0..<7) { index in
-                                        VStack(spacing: 20) {
-                                            Text(weekStore.dateToString(date: week.date[index], format: "EEE"))
-                                                .font(.system(size:14))
-                                                .fontWeight(.semibold)
-                                                .frame(maxWidth:.infinity)
-                                            
-                                            Text(weekStore.dateToString(date: week.date[index], format: "d"))
-                                                .font(.system(size:14))
-                                                .frame(maxWidth:.infinity)
-                                        }
-                                        .onTapGesture {
-                                            // Updating Current Day
-                                            weekStore.currentDate = week.date[index]
-                                        }
-                                    }
-                                }
-                                .frame(width: UIScreen.main.bounds.width)
-                                .background(
-                                    Rectangle()
-                                        .fill(color3)
-                                       
-                                )
-                            }
-                            .offset(x: myXOffset(week.id), y: 0)
-                            .zIndex(1.0 - abs(distance(week.id)) * 0.1)
-                            .padding(.horizontal, 20)
-                        }
-                    }
-                    .padding()
-                    .padding()
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                draggingItem = snappedItem + value.translation.width / 400
-                            }
-                            .onEnded { value in
-                                withAnimation {
-                                    if value.predictedEndTranslation.width > 0 {
-                                        draggingItem = snappedItem + 1
-                                    } else {
-                                        draggingItem = snappedItem - 1
-                                    }
-                                    snappedItem = draggingItem
-                                    
-                                    weekStore.update(index: Int(snappedItem))
+                        .padding()
+                }
+                
+                ScrollView(showsIndicators: false) {
+                    ForEach(self.contactsManager.contacts) { contact in
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundColor(color3)
+                                .frame(width: 350, height: 75)
+                            HStack{
+                                Circle()
+                                    .fill(.white)
+                                    .frame(width: 100, height: 50)
+                                
+                                VStack {
+                                    Text("\(contact.firstName) \(contact.lastName)")
+                                    Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
                                 }
                             }
-                    )
-                }
-                ZStack{
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(color3)
-                        .frame(width: 350, height: 75)
-                    HStack{
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 100, height: 50)
-                        
-                        VStack {
-                            Text("Placehold")
-                            Text("3 Nov 2022")
-                        }
-                    }
-                }
-                ZStack{
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(color3)
-                        .frame(width: 350, height: 75)
-                    HStack{
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 100, height: 50)
-                        
-                        VStack {
-                            Text("Placehold")
-                            Text("3 Nov 2022")
-                        }
-                    }
-                }
-                Text("Next Week                                   ")
-                    .font(.title)
-                    .bold()
-                ZStack{
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(color3)
-                        .frame(width: 350, height: 75)
-                    HStack{
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 100, height: 50)
-                        
-                        VStack {
-                            Text("Placehold")
-                            Text("3 Nov 2022")
-                        }
-                    }
-                }
-                ZStack{
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(color3)
-                        .frame(width: 350, height: 75)
-                    HStack{
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 100, height: 50)
-                        
-                        VStack {
-                            Text("Placehold")
-                            Text("3 Nov 2022")
                         }
                     }
                 }
@@ -191,7 +101,7 @@ struct HomeCalendarView: View {
 
 struct HomeCalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeCalendarView()
+        HomeCalendarView(contactsManager: ContactInfoManager())
     }
 }
 

@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            HomeCalendarView()
+            HomeCalendarView(contactsManager: ContactInfoManager())
                 .tabItem {
                     Label("Homepage", systemImage: "house.fill")
                 }
