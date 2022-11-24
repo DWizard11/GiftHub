@@ -22,9 +22,6 @@
 		510663D52922A3C5001F201A /* FriendGiftIdeaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663D42922A3C5001F201A /* FriendGiftIdeaDetailView.swift */; };
 		510663D72922A3E9001F201A /* NewLikingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663D62922A3E9001F201A /* NewLikingView.swift */; };
 		510663D92922A408001F201A /* FriendDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663D82922A408001F201A /* FriendDetailManager.swift */; };
-		510663DB2922A43D001F201A /* FriendLiking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663DA2922A43D001F201A /* FriendLiking.swift */; };
-		510663DD2922A451001F201A /* FriendDislikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663DC2922A451001F201A /* FriendDislikes.swift */; };
-		510663DF2922A469001F201A /* FriendGiftIdeas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510663DE2922A469001F201A /* FriendGiftIdeas.swift */; };
 		5181CF07292CD7B100FAA6DF /* GiftGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5181CF06292CD7B100FAA6DF /* GiftGuideView.swift */; };
 		5181CF0A292CEB1600FAA6DF /* GiftGuideOneScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5181CF09292CEB1600FAA6DF /* GiftGuideOneScrollView.swift */; };
 		5181CF0C292CEB3000FAA6DF /* GiftGuideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5181CF0B292CEB3000FAA6DF /* GiftGuideModel.swift */; };
@@ -72,9 +69,6 @@
 		510663D42922A3C5001F201A /* FriendGiftIdeaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendGiftIdeaDetailView.swift; sourceTree = "<group>"; };
 		510663D62922A3E9001F201A /* NewLikingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLikingView.swift; sourceTree = "<group>"; };
 		510663D82922A408001F201A /* FriendDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailManager.swift; sourceTree = "<group>"; };
-		510663DA2922A43D001F201A /* FriendLiking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendLiking.swift; sourceTree = "<group>"; };
-		510663DC2922A451001F201A /* FriendDislikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDislikes.swift; sourceTree = "<group>"; };
-		510663DE2922A469001F201A /* FriendGiftIdeas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendGiftIdeas.swift; sourceTree = "<group>"; };
 		5181CF06292CD7B100FAA6DF /* GiftGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGuideView.swift; sourceTree = "<group>"; };
 		5181CF09292CEB1600FAA6DF /* GiftGuideOneScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGuideOneScrollView.swift; sourceTree = "<group>"; };
 		5181CF0B292CEB3000FAA6DF /* GiftGuideModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGuideModel.swift; sourceTree = "<group>"; };
@@ -181,9 +175,6 @@
 				510663D42922A3C5001F201A /* FriendGiftIdeaDetailView.swift */,
 				510663D62922A3E9001F201A /* NewLikingView.swift */,
 				510663D82922A408001F201A /* FriendDetailManager.swift */,
-				510663DA2922A43D001F201A /* FriendLiking.swift */,
-				510663DC2922A451001F201A /* FriendDislikes.swift */,
-				510663DE2922A469001F201A /* FriendGiftIdeas.swift */,
 				4CE5611F29038B7E001D233A /* FriendListView.swift */,
 			);
 			path = FriendDetailView;
@@ -350,7 +341,6 @@
 			files = (
 				4CE560F7290387EF001D233A /* ContentView.swift in Sources */,
 				5181CF0E292CEC3200FAA6DF /* GiftGuideOneView.swift in Sources */,
-				510663DB2922A43D001F201A /* FriendLiking.swift in Sources */,
 				D90F43CE2924C52C0068915F /* GiftSearchDatabase.swift in Sources */,
 				5181CF07292CD7B100FAA6DF /* GiftGuideView.swift in Sources */,
 				D96FC4062913A5DC00B3630B /* NotificationHandler.swift in Sources */,
@@ -361,14 +351,12 @@
 				5181CF0A292CEB1600FAA6DF /* GiftGuideOneScrollView.swift in Sources */,
 				4C17395C2915F5CB00978611 /* ContactsManager.swift in Sources */,
 				510663D92922A408001F201A /* FriendDetailManager.swift in Sources */,
-				510663DF2922A469001F201A /* FriendGiftIdeas.swift in Sources */,
 				4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */,
 				510663D52922A3C5001F201A /* FriendGiftIdeaDetailView.swift in Sources */,
 				D90F43CC292123620068915F /* CalenderView.swift in Sources */,
 				4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */,
 				D96FC4082913A5FF00B3630B /* NotificationView.swift in Sources */,
 				510663D72922A3E9001F201A /* NewLikingView.swift in Sources */,
-				510663DD2922A451001F201A /* FriendDislikes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
