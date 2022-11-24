@@ -21,8 +21,7 @@ class FetchContacts {
     
     func fetchingContacts(currentContacts: [ContactInfo]) -> [ContactInfo]{
         var contacts = currentContacts
-        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactBirthdayKey,
-        CNContactIdentifierKey]
+        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactBirthdayKey, CNContactIdentifierKey]
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
         do {
             try CNContactStore().enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
@@ -33,9 +32,12 @@ class FetchContacts {
                     }
                 }
                 
-                if isNew {
+                if isNew && contact.birthday != nil {
                     contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, birthday: contact.birthday, isStarred: false, identifier: contact.identifier))
+
                 }
+                
+               
                 
             })
         } catch let error {

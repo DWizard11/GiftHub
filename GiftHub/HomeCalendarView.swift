@@ -1,3 +1,10 @@
+//
+//  HomeCalendarView.swift
+//  GiftHub
+//
+//  Created by DWizard11 on 5/11/22.
+//
+
 import SwiftUI
 
 extension UIColor {
@@ -21,16 +28,21 @@ let color2 = UIColor(red: 255, green: 248, blue: 211)
 let color3 = Color(red: 255/255, green: 240/255, blue: 172/255)
 let color4 = Color(red: 255/255, green: 255/255, blue: 109/255)
 
+
+
 struct HomeCalendarView: View {
     
     @State var isSheetShown = false
     @State private var date = Date()
+    @State private var calendar = Calendar.current
     @StateObject var weekStore = WeekStore()
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
     @ObservedObject var contactsManager: ContactInfoManager
     
+    
     var body: some View {
+        let currentMonth = calendar.component(.month, from: date)
         ZStack {
             Color(color2)
                 .edgesIgnoringSafeArea(.all)
@@ -64,21 +76,24 @@ struct HomeCalendarView: View {
                 
                 ScrollView(showsIndicators: false) {
                     ForEach(self.contactsManager.contacts) { contact in
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 15)
-                                .foregroundColor(color3)
-                                .frame(width: 350, height: 75)
-                            HStack{
-                                Circle()
-                                    .fill(.white)
-                                    .frame(width: 100, height: 50)
-                                
-                                VStack {
-                                    Text("\(contact.firstName) \(contact.lastName)")
-                                    Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
+                        if contact.birthday?.month == currentMonth {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 15)
+                                    .foregroundColor(color3)
+                                    .frame(width: 350, height: 75)
+                                HStack{
+                                    Circle()
+                                        .fill(.white)
+                                        .frame(width: 100, height: 50)
+                                    
+                                    VStack {
+                                        Text("\(contact.firstName) \(contact.lastName)")
+                                        Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
+                                    }
                                 }
                             }
                         }
+                        
                     }
                 }
             }
