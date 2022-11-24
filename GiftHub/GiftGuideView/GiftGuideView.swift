@@ -37,23 +37,6 @@ struct GiftGuideView: View {
                         
                     }
                 }
-            
-            
-            //List {
-            //    ForEach(giftguides, id: \.self){ giftguide in
-                 //   Image(systemName: "figure.sit")
-                    
-             //       Text(giftguide)
-               //     Link(destination: URL(string: "https://www.amazon.sg/s/ref=nb_sb_noss_2?url=search-alias%3D(/gift)&field-keywords=&crid=3BOYON3KJVMTJ)")!,label: {
-             //           HStack {
-             //               Text(giftguides.capitalized)
-            //                Spacer()
-            //                Image(systemName: "figure.walk")
-            //                    .foregroundColor(Color.blue)
-            //            }
-                        //.padding()
-            //        })
-            //    }
             }
             .navigationTitle("Gift Guides")
         }
