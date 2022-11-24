@@ -11,7 +11,7 @@ import Contacts
 struct FriendDetailView: View {
     
     @State var friendname = ""
-    @State var alertdates = ["1 day", "4 days", "1 week", "2 weeks", "1 month"]
+   // @State var alertdates = ["1 day", "4 days", "1 week", "2 weeks", "1 month"]
     @State var relationships = ["Friend", "Parent", "Child", "Sibling", "Wife", "Husband", "In-laws", "Uncle", "Aunt", "Cousin", "Grandparents", "Grandchildren", "Pet", "Myself", "Classmate", "Senior", "Junior", "Colleague", "Boss", "Teacher", "Student", "Others" ]
     @State var selectedAlertDate = "1 week"
     @State var selectedRelationship = "Friend"
@@ -59,11 +59,11 @@ struct FriendDetailView: View {
                     }
                 }
                 
-                Picker("Notification", selection: $selectedAlertDate) {
-                    ForEach(alertdates, id: \.self) { alertdate in
-                        Text(alertdate)
-                    }
-                }
+    //            Picker("Notification", selection: $selectedAlertDate) {
+     //               ForEach(alertdates, id: \.self) { alertdate in
+     //                   Text(alertdate)
+  //                  }
+   //             }
             }
             Section("Likings") {
                 List {
