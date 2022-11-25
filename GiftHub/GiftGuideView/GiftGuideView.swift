@@ -18,9 +18,9 @@ struct GiftGuideView: View {
                     NavigationLink("Gifts for Teens") {
                         GiftGuideOneView()
                     }
-                    NavigationLink("Gifts for Plant Lovers") {
-                        GiftGuideTwoView()
-                    }
+//                    NavigationLink("Gifts for Plant Lovers") {
+//                        GiftGuideTwoView()
+//                    }
                 }
                 Section("Where to find gifts") {
                     NavigationLink("Places in Singapore") {

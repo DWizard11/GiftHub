@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-struct FriendDislike: Identifiable, Codable {
-    var id = UUID()
-    var title: String
-}
 
 
 

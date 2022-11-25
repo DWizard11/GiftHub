@@ -7,6 +7,12 @@
 import Foundation
 import SwiftUI
 
+struct FriendLiking: Identifiable, Codable {
+    var id = UUID()
+    var title: String
+}
+
+
 class FriendLikingManager: ObservableObject {
     @Published var friendlikings: [FriendLiking] = [] {
         didSet {
@@ -52,6 +58,13 @@ class FriendLikingManager: ObservableObject {
 }
 
 
+struct FriendDislike: Identifiable, Codable {
+    var id = UUID()
+    var title: String
+}
+
+
+
 class FriendDislikeManager: ObservableObject {
     @Published var frienddislikes: [FriendDislike] = [] {
         didSet {
@@ -94,6 +107,13 @@ class FriendDislikeManager: ObservableObject {
         
         frienddislikes = finalFriendDislikes
     }
+}
+
+
+struct FriendGiftIdea: Identifiable, Codable {
+    var id = UUID()
+    var title: String
+    var hasBeenBought = false
 }
 
 class FriendGiftIdeaManager: ObservableObject {

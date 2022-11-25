@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-struct FriendGiftIdea: Identifiable, Codable {
-    var id = UUID()
-    var title: String
-    var hasBeenBought = false
-}
 
 
 struct NewGiftIdeaView: View {

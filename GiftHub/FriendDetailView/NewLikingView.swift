@@ -7,11 +7,6 @@
 import SwiftUI
 import Foundation
 
-struct FriendLiking: Identifiable, Codable {
-    var id = UUID()
-    var title: String
-}
-
 
 struct NewLikingView: View {
     
