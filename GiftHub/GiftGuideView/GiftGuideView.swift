@@ -21,7 +21,9 @@ struct GiftGuideView: View {
                     NavigationLink("Gifts for Plant Lovers") {
                         GiftGuideTwoView()
                     }
-                    NavigationLink("Gifts for Book Lov")
+                    NavigationLink("Gifts for Book Lovers") {
+                        GiftGuideThreeView()
+                    }
                 }
             }
             .navigationTitle("Gift Guides")
