@@ -12,57 +12,37 @@ struct FriendLiking: Identifiable, Codable {
     var title: String
 }
 
-struct FriendDislike: Identifiable, Codable {
-    var id = UUID()
-    var title: String
-}
-
-
-struct FriendGiftIdea: Identifiable, Codable {
-    var id = UUID()
-    var title: String
-    var hasBeenBought = false
-}
 
 struct NewLikingView: View {
     
-    @State var friendliking = ""
-    @State var frienddislike = ""
-    @State var friendgiftidea = ""
-    @Binding var friendlikings: [FriendLiking]
-    @Binding var frienddislikes: [FriendDislike]
-    @Binding var friendgiftideas: [FriendGiftIdea]
-    @Environment(\.presentationMode) var presentationMode
+    @State var friendLiking = ""
+    @Binding var friendLikings: [FriendLiking]
+    @Binding var passedValue: Int
+    @Environment(\.dismiss) var dismiss
+    //@Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        Form {
-            Section("Add Liking") {
-                TextField("Add Liking", text: $friendliking)
-                    .font(.headline)
-                Button("Save Liking") {
-                    friendlikings.append(FriendLiking(title: friendliking))
+        ZStack {
+            Form {
+                Section("Add Liking") {
+                    TextField("Add Liking", text: $friendLiking)
+                        .font(.headline)
+                    Button("Save Liking") {
+                        friendLikings.append(FriendLiking(title: friendLiking))
+                    }
                 }
             }
-            Section("Add Dislike") {
-                TextField("Add Dislike", text: $frienddislike)
-                    .font(.headline)
-                Button("Save Dislike") {
-                    frienddislikes.append(FriendDislike(title: frienddislike))
-                }
+            .padding()
+
+            Button {
+                friendLikings.append(FriendLiking(title: friendLiking))
+                dismiss()
+            } label: {
+                Text("Save and Close")
             }
-            Section("Add Gift Idea") {
-                TextField("Add Gift Idea", text: $friendgiftidea)
-                    .font(.headline)
-                Button("Save Gift Idea") {
-                    friendgiftideas.append(FriendGiftIdea(title: friendgiftidea))
-                }
-            }
+            .buttonStyle(.bordered)
+            
         }
     }
 }
 
-struct NewLikingView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewLikingView(friendlikings: .constant([]), frienddislikes: .constant([]), friendgiftideas: .constant([]))
-    }
-}

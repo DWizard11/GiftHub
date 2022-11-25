@@ -10,6 +10,8 @@
 		4C17395C2915F5CB00978611 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17395B2915F5CB00978611 /* ContactsManager.swift */; };
 		4C68D961290FD0C900139E54 /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68D960290FD0C900139E54 /* FriendDetailView.swift */; };
 		4C68D963290FD4C400139E54 /* GiftSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68D962290FD4C400139E54 /* GiftSearchView.swift */; };
+		4C80ADF729306CCE00D2E5FA /* NewDislikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80ADF629306CCE00D2E5FA /* NewDislikeView.swift */; };
+		4C80ADF929306DBE00D2E5FA /* NewGiftIdeaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80ADF829306DBE00D2E5FA /* NewGiftIdeaView.swift */; };
 		4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */; };
 		4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE560F4290387EF001D233A /* GiftHubApp.swift */; };
 		4CE560F7290387EF001D233A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE560F6290387EF001D233A /* ContentView.swift */; };
@@ -53,6 +55,8 @@
 		4C17395B2915F5CB00978611 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		4C68D960290FD0C900139E54 /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
 		4C68D962290FD4C400139E54 /* GiftSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSearchView.swift; sourceTree = "<group>"; };
+		4C80ADF629306CCE00D2E5FA /* NewDislikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDislikeView.swift; sourceTree = "<group>"; };
+		4C80ADF829306DBE00D2E5FA /* NewGiftIdeaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGiftIdeaView.swift; sourceTree = "<group>"; };
 		4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendarView.swift; sourceTree = "<group>"; };
 		4CE560F1290387EF001D233A /* GiftHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiftHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE560F4290387EF001D233A /* GiftHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHubApp.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				4C68D960290FD0C900139E54 /* FriendDetailView.swift */,
 				510663D42922A3C5001F201A /* FriendGiftIdeaDetailView.swift */,
 				510663D62922A3E9001F201A /* NewLikingView.swift */,
+				4C80ADF629306CCE00D2E5FA /* NewDislikeView.swift */,
+				4C80ADF829306DBE00D2E5FA /* NewGiftIdeaView.swift */,
 				510663D82922A408001F201A /* FriendDetailManager.swift */,
 				4CE5611F29038B7E001D233A /* FriendListView.swift */,
 			);
@@ -341,6 +347,7 @@
 			files = (
 				4CE560F7290387EF001D233A /* ContentView.swift in Sources */,
 				5181CF0E292CEC3200FAA6DF /* GiftGuideOneView.swift in Sources */,
+				4C80ADF729306CCE00D2E5FA /* NewDislikeView.swift in Sources */,
 				D90F43CE2924C52C0068915F /* GiftSearchDatabase.swift in Sources */,
 				5181CF07292CD7B100FAA6DF /* GiftGuideView.swift in Sources */,
 				D96FC4062913A5DC00B3630B /* NotificationHandler.swift in Sources */,
@@ -352,6 +359,7 @@
 				4C17395C2915F5CB00978611 /* ContactsManager.swift in Sources */,
 				510663D92922A408001F201A /* FriendDetailManager.swift in Sources */,
 				4CE560F5290387EF001D233A /* GiftHubApp.swift in Sources */,
+				4C80ADF929306DBE00D2E5FA /* NewGiftIdeaView.swift in Sources */,
 				510663D52922A3C5001F201A /* FriendGiftIdeaDetailView.swift in Sources */,
 				D90F43CC292123620068915F /* CalenderView.swift in Sources */,
 				4CBA432A290CCD8300E66A3A /* HomeCalendarView.swift in Sources */,

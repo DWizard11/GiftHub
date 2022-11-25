@@ -105,6 +105,7 @@ struct FriendListView: View {
             }
         }
         
+        
     }
     
     func getContacts() {
