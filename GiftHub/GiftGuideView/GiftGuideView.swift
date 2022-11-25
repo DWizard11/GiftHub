@@ -15,17 +15,20 @@ struct GiftGuideView: View {
         NavigationView {
             Form {
                 Section("For Teens") {
-                    NavigationLink("Gifts for Teens") {
+                    NavigationLink("All Gift Ideas") {
                         GiftGuideOneView()
                     }
-                    NavigationLink("Gifts for Plant Lovers") {
+                    NavigationLink("For Plant Lovers") {
                         GiftGuideTwoView()
                     }
-                    NavigationLink("Gifts for Book Lovers") {
+                    NavigationLink("For Book Lovers") {
                         GiftGuideThreeView()
                     }
-                    NavigationLink("Gifts for Gamers") {
+                    NavigationLink("For Gamers") {
                         GiftGuideFourView()
+                    }
+                    NavigationLink("For Stationery Lovers") {
+                        GiftGuideFiveView()
                     }
                 }
             }

@@ -34,6 +34,8 @@
 		51F0704629309C46001C6EAE /* GiftGuideFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0704529309C46001C6EAE /* GiftGuideFourView.swift */; };
 		51F0704829309C7C001C6EAE /* GiftGuideFourScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0704729309C7C001C6EAE /* GiftGuideFourScrollView.swift */; };
 		51F0704C29309D57001C6EAE /* GiftGuideTwoScrollViewd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0704B29309D57001C6EAE /* GiftGuideTwoScrollViewd.swift */; };
+		51F0704E2930A505001C6EAE /* GiftGuideFiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0704D2930A505001C6EAE /* GiftGuideFiveView.swift */; };
+		51F070502930A52B001C6EAE /* GiftGuideFiveScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0704F2930A52B001C6EAE /* GiftGuideFiveScrollView.swift */; };
 		D90F43CC292123620068915F /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F43CB292123620068915F /* CalenderView.swift */; };
 		D90F43CE2924C52C0068915F /* GiftSearchDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90F43CD2924C52C0068915F /* GiftSearchDatabase.swift */; };
 		D96FC4062913A5DC00B3630B /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96FC4052913A5DC00B3630B /* NotificationHandler.swift */; };
@@ -89,6 +91,8 @@
 		51F0704529309C46001C6EAE /* GiftGuideFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGuideFourView.swift; sourceTree = "<group>"; };
 		51F0704729309C7C001C6EAE /* GiftGuideFourScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGuideFourScrollView.swift; sourceTree = "<group>"; };
 		51F0704B29309D57001C6EAE /* GiftGuideTwoScrollViewd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGuideTwoScrollViewd.swift; sourceTree = "<group>"; };
+		51F0704D2930A505001C6EAE /* GiftGuideFiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGuideFiveView.swift; sourceTree = "<group>"; };
+		51F0704F2930A52B001C6EAE /* GiftGuideFiveScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGuideFiveScrollView.swift; sourceTree = "<group>"; };
 		D90F43CB292123620068915F /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		D90F43CD2924C52C0068915F /* GiftSearchDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSearchDatabase.swift; sourceTree = "<group>"; };
 		D96FC4052913A5DC00B3630B /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				51F0704329309985001C6EAE /* GiftGuideThreeScrollView.swift */,
 				51F0704529309C46001C6EAE /* GiftGuideFourView.swift */,
 				51F0704729309C7C001C6EAE /* GiftGuideFourScrollView.swift */,
+				51F0704D2930A505001C6EAE /* GiftGuideFiveView.swift */,
+				51F0704F2930A52B001C6EAE /* GiftGuideFiveScrollView.swift */,
 				5181CF0B292CEB3000FAA6DF /* GiftGuideModel.swift */,
 			);
 			path = GiftGuideView;
@@ -363,10 +369,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51F070502930A52B001C6EAE /* GiftGuideFiveScrollView.swift in Sources */,
 				51F07042293093FA001C6EAE /* GiftGuideThreeView.swift in Sources */,
 				51F0704629309C46001C6EAE /* GiftGuideFourView.swift in Sources */,
 				4CE560F7290387EF001D233A /* ContentView.swift in Sources */,
 				5181CF0E292CEC3200FAA6DF /* GiftGuideOneView.swift in Sources */,
+				51F0704E2930A505001C6EAE /* GiftGuideFiveView.swift in Sources */,
 				51F0704C29309D57001C6EAE /* GiftGuideTwoScrollViewd.swift in Sources */,
 				4C80ADF729306CCE00D2E5FA /* NewDislikeView.swift in Sources */,
 				D90F43CE2924C52C0068915F /* GiftSearchDatabase.swift in Sources */,
