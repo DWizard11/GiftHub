@@ -19,7 +19,7 @@ struct GiftGuideTwoView: View {
                     .bold()
           //      .padding(.top)
             }
-            GiftGuideTwoScrollView()
+            GiftGuideTwoScrollViewd()
         }
     }
 }
