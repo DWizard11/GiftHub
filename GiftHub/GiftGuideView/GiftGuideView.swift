@@ -24,6 +24,9 @@ struct GiftGuideView: View {
                     NavigationLink("Gifts for Book Lovers") {
                         GiftGuideThreeView()
                     }
+                    NavigationLink("Gifts for Gamers") {
+                        GiftGuideFourView()
+                    }
                 }
             }
             .navigationTitle("Gift Guides")
