@@ -18,17 +18,10 @@ struct GiftGuideView: View {
                     NavigationLink("Gifts for Teens") {
                         GiftGuideOneView()
                     }
-                }
-                
-                Section("For different festivities") {
-                    NavigationLink("Christmas") {
-                        
-                    }
-                    NavigationLink("Chinese New Year") {
-                        
+                    NavigationLink("Gifts for Plant Lovers") {
+                        GiftGuideTwoView()
                     }
                 }
-                
                 Section("Where to find gifts") {
                     NavigationLink("Places in Singapore") {
                         
