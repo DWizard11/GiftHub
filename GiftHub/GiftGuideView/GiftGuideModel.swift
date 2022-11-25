@@ -37,5 +37,16 @@ var GGgiftsone = [GGGift(id: 0, title: "Air Force 1s", imageName: "1"),
                 GGGift(id: 21, title: "Water Bottle", imageName: "22"),
 ]
 
-var GGgiftstwo = [GGGift(id: 9, title: "Air Force 1s", imageName: "1"),
+var GGgiftstwo = [GGGift(id: 0, title: "Spider Plant", imageName: "23"),
+                  GGGift(id: 1, title: "Pilea Plant", imageName: "24"),
+                  GGGift(id: 2, title: "Jade Plant", imageName: "25"),
+                  GGGift(id: 3, title: "Snake Plant", imageName: "26"),
+                  GGGift(id: 4, title: "ZZ Plant", imageName: "27"),
+                  GGGift(id: 5, title: "Philodendron Plant", imageName: "28"),
+                  GGGift(id: 6, title: "Red Prayer Plant", imageName: "29"),
+                  GGGift(id: 7, title: "Variegated Monstera Plant", imageName: "30"),
+                  GGGift(id: 8, title: "Monstera Plant", imageName: "31"),
+                  GGGift(id: 9, title: "Succulents", imageName: "32"),
+                  GGGift(id: 10, title: "Fake Plants", imageName: "33"),
+                  GGGift(id: 11, title: "Rope Plant", imageName: "34"),
 ]
