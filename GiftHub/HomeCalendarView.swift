@@ -35,7 +35,7 @@ struct HomeCalendarView: View {
     @State var isSheetShown = false
     @State private var date = Date()
     @State private var calendar = Calendar.current
-    @StateObject var weekStore = WeekStore()
+//    @StateObject var weekStore = WeekStore()
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
     @ObservedObject var contactsManager: ContactInfoManager
@@ -43,53 +43,51 @@ struct HomeCalendarView: View {
     
     var body: some View {
         let currentMonth = calendar.component(.month, from: date)
-        ZStack {
-            Color(color2)
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-                HStack{
-                    Text("GiftDuck 🦆")
-                        .font(.largeTitle)
-                        .bold()
-                    
-                    
-                }
-                DatePicker("Enter your birthday", selection: $date)
-                    .datePickerStyle(GraphicalDatePickerStyle())
-                    .frame(maxHeight: 400)
-                    .background(.white)
-                    .padding()
-                VStack{
-                    Text("")
-                    Text("Upcoming Birthdays!")
-                        .font(.largeTitle)
-                        .bold()
+        NavigationView {
+            ZStack {
+            //    Color(color2)
+           //         .edgesIgnoringSafeArea(.all)
+                VStack {
+                    DatePicker("Enter your birthday", selection: $date)
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .frame(maxHeight: 400)
+                        .background(.white)
                         .padding()
-                }
-                
-                ScrollView(showsIndicators: false) {
-                    ForEach(self.contactsManager.contacts) { contact in
-                        if contact.birthday?.month == currentMonth {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 15)
-                                    .foregroundColor(color3)
-                                    .frame(width: 350, height: 75)
-                                HStack{
-                                    Circle()
-                                        .fill(.white)
-                                        .frame(width: 100, height: 50)
-                                    
-                                    VStack {
-                                        Text("\(contact.firstName) \(contact.lastName)")
-                                        Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
+                    VStack{
+                        Text("")
+                        Text("Upcoming Birthdays!")
+                            .font(.largeTitle)
+                            .bold()
+                            .padding()
+                    }
+                    
+                    ScrollView(showsIndicators: false) {
+                        ForEach(self.contactsManager.contacts) { contact in
+                            if contact.birthday?.month == currentMonth {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .foregroundColor(color3)
+                                        .frame(width: 350, height: 75)
+                                    HStack{
+                                        Circle()
+                                            .fill(.white)
+                                            .frame(width: 100, height: 50)
+                                        
+                                        VStack {
+                                            Text("\(contact.firstName) \(contact.lastName)")
+                                            Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
+                                        }
                                     }
                                 }
                             }
+                            
                         }
-                        
                     }
                 }
             }
+            .navigationTitle("GiftDuck 🦆")
+                .font(.largeTitle)
+                .bold()
         }
     }
 }

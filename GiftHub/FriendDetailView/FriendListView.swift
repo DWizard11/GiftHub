@@ -52,7 +52,7 @@ struct FriendListView: View {
                         }
                     }
                 }
-                .padding([.leading, .trailing,.top])
+                .padding([.leading, .trailing])
                 
                 
                 Form {
@@ -103,9 +103,8 @@ struct FriendListView: View {
                     }
                 }
             }
+            .navigationTitle("Contacts")
         }
-        
-        
     }
     
     func getContacts() {
