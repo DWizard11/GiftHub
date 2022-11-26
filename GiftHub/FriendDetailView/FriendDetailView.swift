@@ -68,12 +68,12 @@ struct FriendDetailView: View {
                             Text(relationship)
                         }
                     }
-                        DatePicker("Birthday Alert ! :", selection: $selectedDate, in: Date()...)
+                        DatePicker("Birthday Alert 🎂:", selection: $selectedDate, in: Date()...)
                         Button("Schedule alert") {
                             notify.sendNotification(date: selectedDate,
                                                     type: "date",
                                                     title: "Hello!",
-                                                    body: "It's \(contact.firstName)'s Birthday!")
+                                                    body: "It's \(contact.firstName)'s Birthday!🎉🎂")
                             notify.askPermission()
                         }
                     
