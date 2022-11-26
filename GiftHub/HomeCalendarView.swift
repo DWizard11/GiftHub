@@ -48,24 +48,17 @@ struct HomeCalendarView: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack{
-                    Text("Birthday")
+                    Text("GiftDuck 🦆")
                         .font(.largeTitle)
                         .bold()
-                    Button(role: .none){
-                        isSheetShown = true
-                    } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .font(.system(size: 30))
-                            .foregroundColor(.yellow)
-                    }
                     
                     
                 }
                 DatePicker("Enter your birthday", selection: $date)
-                                     .datePickerStyle(GraphicalDatePickerStyle())
-                                     .frame(maxHeight: 400)
-                                     .background(.white)
-                                     .padding()
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .frame(maxHeight: 400)
+                    .background(.white)
+                    .padding()
                 VStack{
                     Text("")
                     Text("Upcoming Birthdays!")
@@ -98,9 +91,6 @@ struct HomeCalendarView: View {
                 }
             }
         }
-        .sheet(isPresented: $isSheetShown){
-            NotificationView(isPresented: $isSheetShown)
-        }
     }
     func distance(_ item: Int) -> Double {
         return (draggingItem - Double(item)).remainder(dividingBy: Double(weekStore.allWeeks.count))
@@ -110,10 +100,7 @@ struct HomeCalendarView: View {
         let angle = Double.pi * 2 / Double(weekStore.allWeeks.count) * distance(item)
         return sin(angle) * 200
     }
-    
 }
-
-
 struct HomeCalendarView_Previews: PreviewProvider {
     static var previews: some View {
         HomeCalendarView(contactsManager: ContactInfoManager())

@@ -13,7 +13,7 @@ struct GiftGuideFiveView: View {
             Spacer()
             Spacer()
             HStack {
-                Text("Gift Ideas for Gamers")
+                Text("Gift Ideas for Stationery Lovers")
                     .font(.largeTitle)
                     .multilineTextAlignment(.leading)
                     .bold()
