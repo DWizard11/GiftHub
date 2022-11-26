@@ -48,6 +48,8 @@ struct HomeCalendarView: View {
             //    Color(color2)
            //         .edgesIgnoringSafeArea(.all)
                 VStack {
+                    Text("GiftDuck 🦆!")
+                        .frame(width: 360, height: 50, alignment: .topLeading)
                     DatePicker("Enter your birthday", selection: $date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .frame(maxHeight: 400)
@@ -56,9 +58,11 @@ struct HomeCalendarView: View {
                     VStack{
                         Text("")
                         Text("Upcoming Birthdays!")
-                            .font(.largeTitle)
+                            .font(.title)
                             .bold()
+                            .frame(width: 360, height: 50, alignment: .leading)
                             .padding()
+
                     }
                     
                     ScrollView(showsIndicators: false) {
@@ -85,7 +89,7 @@ struct HomeCalendarView: View {
                     }
                 }
             }
-            .navigationTitle("GiftDuck 🦆")
+            .navigationTitle("Welcome to")
                 .font(.largeTitle)
                 .bold()
         }
