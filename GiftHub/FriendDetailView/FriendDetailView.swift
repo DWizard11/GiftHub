@@ -18,6 +18,9 @@ enum Page: Identifiable {
 
 struct FriendDetailView: View {
     
+    let notify = NotificationHandler()
+    //
+    //
     @State var friendname = ""
     // @State var alertdates = ["1 day", "4 days", "1 week", "2 weeks", "1 month"]
     @State var relationships = ["Friend", "Parent", "Child", "Sibling", "Wife", "Husband", "In-laws", "Uncle", "Aunt", "Cousin", "Grandparents", "Grandchildren", "Pet", "Myself", "Classmate", "Senior", "Junior", "Colleague", "Boss", "Teacher", "Student", "Others" ]
@@ -65,6 +68,14 @@ struct FriendDetailView: View {
                             Text(relationship)
                         }
                     }
+                        DatePicker("Birthday Alert ! :", selection: $selectedDate, in: Date()...)
+                        Button("Schedule alert") {
+                            notify.sendNotification(date: selectedDate,
+                                                    type: "date",
+                                                    title: "Hello!",
+                                                    body: "It's \(contact.firstName)'s Birthday!")
+                            notify.askPermission()
+                        }
                     
                     //            Picker("Notification", selection: $selectedAlertDate) {
                     //               ForEach(alertdates, id: \.self) { alertdate in
