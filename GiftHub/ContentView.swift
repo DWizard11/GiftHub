@@ -15,7 +15,7 @@ struct ContentView: View {
         TabView {
             HomeCalendarView(contactsManager: ContactInfoManager())
                 .tabItem {
-                    Label("Homepage", systemImage: "house.fill")
+                    Label("Home", systemImage: "house.fill")
                 }
             FriendListView(contactsManager: ContactInfoManager())
                 .tabItem {
