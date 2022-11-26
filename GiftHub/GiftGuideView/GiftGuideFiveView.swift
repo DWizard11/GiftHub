@@ -10,8 +10,7 @@ import SwiftUI
 struct GiftGuideFiveView: View {
     var body: some View {
         ScrollView {
-            Spacer()
-            Spacer()
+            
             HStack {
                 Text("Gift Ideas for Stationery Lovers")
                     .font(.largeTitle)
