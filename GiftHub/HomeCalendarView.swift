@@ -33,6 +33,7 @@ let color4 = Color(red: 255/255, green: 255/255, blue: 109/255)
 struct HomeCalendarView: View {
     
     @State var isSheetShown = false
+    @State var selectedDate = Date();
     @State private var date = Date()
     @State private var calendar = Calendar.current
 //    @StateObject var weekStore = WeekStore()
@@ -50,11 +51,14 @@ struct HomeCalendarView: View {
                 VStack {
                     Text("GiftDuck 🦆!")
                         .frame(width: 360, height: 50, alignment: .topLeading)
-                    DatePicker("Enter your birthday", selection: $date)
-                        .datePickerStyle(GraphicalDatePickerStyle())
-                        .frame(maxHeight: 400)
-                        .background(.white)
-                        .padding()
+
+                    DatePicker("Enter your birthday", selection: $selectedDate)
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                            .frame(maxHeight: 400)
+                            .background(.white)
+                            .padding()
+                    Text("In the month of\(formatMonth(date:selectedDate))")
+   
                     VStack{
                         Text("")
                         Text("Upcoming Birthdays!")
@@ -101,3 +105,12 @@ struct HomeCalendarView_Previews: PreviewProvider {
     }
 }
 
+private func getMonth(date: Date) -> String {
+    
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.month]), from: date)
+    let month = components.month
+
+    return "\(month!)"
+
+]
