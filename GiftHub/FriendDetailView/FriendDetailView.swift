@@ -87,13 +87,17 @@ struct FriendDetailView: View {
                     List {
                         Button {
                             currentPage = .likes
+                            print(contact.likes)
                         } label: {
                             Text("Add your Friend's likes!")
+                            
                         }
-                        ForEach($friendlikingManager.friendlikings) { $friendliking in
+                        ForEach([contact.likes], id: \.self) { like in
                             HStack {
                                 Image(systemName: "circle.fill")
-                                Text(friendliking.title)
+                                Text(like)
+                                
+                                
                             }
                         }
                         .onDelete { indexSet in
@@ -109,6 +113,7 @@ struct FriendDetailView: View {
                     List {
                         Button {
                             currentPage = .dislikes
+                            print(frienddislikeManager.frienddislikes)
                         } label: {
                             Text("Add your Friend's dislikes!")
                         }
@@ -116,6 +121,7 @@ struct FriendDetailView: View {
                             HStack {
                                 Image(systemName: "circle.fill")
                                 Text(frienddislike.title)
+                                
                             }
                         }
                         .onDelete { indexSet in
@@ -158,18 +164,11 @@ struct FriendDetailView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isSheetPresented = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
             }
             .sheet(item: $currentPage) { item in
                 switch item {
                 case .likes:
-                    NewLikingView(friendLikings: $friendlikingManager.friendlikings, passedValue: $valueToPass)
+                    NewLikingView(contact: ContactInfo(firstName: "", lastName: "", isStarred: true, identifier: "", likes: ""), passedValue: $valueToPass)
                 case .dislikes:
                     NewDislikeView(passedValue: $valueToPass, friendDislikes: $frienddislikeManager.frienddislikes)
                 case .giftIdeas:
@@ -186,7 +185,7 @@ struct FriendDetailView: View {
 
 struct FriendDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true, identifier: "")
+        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true, identifier: "", likes: "")
         )
     }
 }
