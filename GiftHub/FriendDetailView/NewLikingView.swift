@@ -12,28 +12,34 @@ struct NewLikingView: View {
     
     @State var friendLiking = ""
     @State var contact: ContactInfo
-    @State var items: [String]
+    @ObservedObject var contactManager: ContactInfoManager
     @Binding var passedValue: Int
     @Environment(\.dismiss) var dismiss
     //@Environment(\.presentationMode) var presentationMode
     
     var body: some View {
+        
+        let contactIndex = self.contactManager.contacts.firstIndex {
+            $0.id == contact.id
+        }!
+        
+        var friend = self.contactManager.contacts[contactIndex]
+        
         ZStack {
             Form {
                 Section("Add Liking") {
                     TextField("Add Liking", text: $friendLiking)
                         .font(.headline)
                     Button("Save Liking") {
-                        items.append(friendLiking)
-                        print(contact.likes)
+                        friend.likes[friend.identifier]?.append(friendLiking)
+                        print(friend.likes)
                     }
                 }
             }
             .padding()
 
             Button {
-                //friendLikings.append(FriendLiking(title: friendLiking))
-                contact.likes[contact.identifier] = items
+                friend.likes[friend.identifier]?.append(friendLiking)
                 print(contact.likes)
                 dismiss()
             } label: {

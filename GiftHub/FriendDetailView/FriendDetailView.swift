@@ -42,20 +42,27 @@ struct FriendDetailView: View {
     @State var currentPage: Page?
     @State var valueToPass = 10
     var contact: ContactInfo
-    
+    @ObservedObject var contactManager: ContactInfoManager
     
     var body: some View {
+        
+        let contactIndex = self.contactManager.contacts.firstIndex {
+            $0.id == contact.id
+        }!
+        
+        var friend = self.contactManager.contacts[contactIndex]
+        
         NavigationView {
             Form {
                 Section("About") {
                     
-                    Text("\(contact.firstName) \(contact.lastName)")
+                    Text("\(friend.firstName) \(friend.lastName)")
                         .font(.headline)
                     
                     HStack {
                         Text("Birthday")
                         Spacer()
-                        Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
+                        Text(verbatim: "\(friend.birthday?.day ?? 0)/\(friend.birthday?.month ?? 0)/\(friend.birthday?.year ?? 0)")
                     }
                     
                     Picker("Age", selection: $selectedAge) {
@@ -74,7 +81,7 @@ struct FriendDetailView: View {
                             notify.sendNotification(date: selectedDate,
                                                     type: "date",
                                                     title: "Hello!",
-                                                    body: "It's \(contact.firstName)'s Birthday!🎉🎂")
+                                                    body: "It's \(friend.firstName)'s Birthday!🎉🎂")
                             notify.askPermission()
                         }
                     
@@ -88,14 +95,14 @@ struct FriendDetailView: View {
                     List {
                         Button {
                             currentPage = .likes
-                            print(contact.likes)
+                            print(friend.likes)
                         } label: {
                             Text("Add your Friend's likes!")
                             
                         }
                         
                         // contact.likes = [id: ["", ""]]
-                        ForEach(contact.likes[contact.identifier] ?? [], id: \.self) { like in
+                        ForEach(friend.likes[friend.identifier] ?? [], id: \.self) { like in
                             HStack {
                                 Image(systemName: "circle.fill")
                                 Text(like)
@@ -169,7 +176,7 @@ struct FriendDetailView: View {
             .sheet(item: $currentPage) { item in
                 switch item {
                 case .likes:
-                    NewLikingView(contact: ContactInfo(firstName: "", lastName: "", isStarred: true, identifier: contact.identifier, likes: [contact.identifier: []]), items: [], passedValue: $valueToPass)
+                    NewLikingView(contact: friend, contactManager: ContactInfoManager(), passedValue: $valueToPass)
                 case .dislikes:
                     NewDislikeView(passedValue: $valueToPass, friendDislikes: $frienddislikeManager.frienddislikes)
                 case .giftIdeas:
@@ -186,8 +193,8 @@ struct FriendDetailView: View {
 
 struct FriendDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true, identifier: "", likes: ["": [""]])
-        )
+        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true, identifier: "", likes: ["": [""]]), contactManager: ContactInfoManager())
+        
     }
 }
 

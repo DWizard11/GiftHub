@@ -60,7 +60,7 @@ struct FriendListView: View {
                         ForEach (self.contactsManager.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
                             if contact.isStarred {
                                 NavigationLink {
-                                    FriendDetailView(contact: contact)
+                                    FriendDetailView(contact: contact, contactManager: ContactInfoManager())
                                 } label: {
                                     Image(systemName: "star.fill")
                                         .onTapGesture {
@@ -82,7 +82,7 @@ struct FriendListView: View {
                         ForEach (self.contactsManager.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
                             if !contact.isStarred {
                                 NavigationLink {
-                                    FriendDetailView(contact: contact)
+                                    FriendDetailView(contact: contact, contactManager: ContactInfoManager())
                                 } label: {
                                     Image(systemName: "star")
                                         .onTapGesture {
