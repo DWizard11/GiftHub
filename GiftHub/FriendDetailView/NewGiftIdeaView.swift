@@ -22,9 +22,6 @@ struct NewGiftIdeaView: View {
                 Section("Add Gift Idea") {
                     TextField("Add Gift Idea", text: $friendgiftidea)
                         .font(.headline)
-                    Button("Save Gift Idea") {
-                        friendgiftideas.append(FriendGiftIdea(title: friendgiftidea))
-                    }
                 }
             }
             .padding()
