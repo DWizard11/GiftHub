@@ -57,7 +57,7 @@ struct HomeCalendarView: View {
                             .frame(maxHeight: 400)
                             .background(.white)
                             .padding()
-                    Text("In the month of \(currentMonth)")
+                    Text("In the month of\(formatMonth(date:selectedDate)):")
    
                     VStack{
                         Text("")
