@@ -43,6 +43,7 @@ struct FriendDetailView: View {
     @State var valueToPass = 10
     var contact: ContactInfo
     
+    
     var body: some View {
         NavigationView {
             Form {
@@ -168,7 +169,7 @@ struct FriendDetailView: View {
             .sheet(item: $currentPage) { item in
                 switch item {
                 case .likes:
-                    NewLikingView(contact: ContactInfo(firstName: "", lastName: "", isStarred: true, identifier: "", likes: ["": [""]]), passedValue: $valueToPass)
+                    NewLikingView(contact: ContactInfo(firstName: "", lastName: "", isStarred: true, identifier: contact.identifier, likes: [contact.identifier: []]), items: [], passedValue: $valueToPass)
                 case .dislikes:
                     NewDislikeView(passedValue: $valueToPass, friendDislikes: $frienddislikeManager.frienddislikes)
                 case .giftIdeas:

@@ -12,6 +12,7 @@ struct NewLikingView: View {
     
     @State var friendLiking = ""
     @State var contact: ContactInfo
+    @State var items: [String]
     @Binding var passedValue: Int
     @Environment(\.dismiss) var dismiss
     //@Environment(\.presentationMode) var presentationMode
@@ -23,7 +24,7 @@ struct NewLikingView: View {
                     TextField("Add Liking", text: $friendLiking)
                         .font(.headline)
                     Button("Save Liking") {
-                        contact.likes[contact.identifier]?.append(friendLiking)
+                        items.append(friendLiking)
                         print(contact.likes)
                     }
                 }
@@ -32,7 +33,8 @@ struct NewLikingView: View {
 
             Button {
                 //friendLikings.append(FriendLiking(title: friendLiking))
-                
+                contact.likes[contact.identifier] = items
+                print(contact.likes)
                 dismiss()
             } label: {
                 Text("Save and Close")
