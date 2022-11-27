@@ -58,8 +58,9 @@ struct HomeCalendarView: View {
                     DatePicker("Enter your birthday", selection: $selectedDate)
                             .datePickerStyle(GraphicalDatePickerStyle())
                             .frame(maxHeight: 400)
-                            
-                    Text("\(currentMonth)")
+                            .background(.white)
+                            .padding()
+                    Text("In the month of\(getMonth(date:selectedDate)):")
    
                     VStack{
                         
