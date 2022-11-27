@@ -23,7 +23,7 @@ struct NewLikingView: View {
                     TextField("Add Liking", text: $friendLiking)
                         .font(.headline)
                     Button("Save Liking") {
-                        contact.likes.append(friendLiking)
+                        contact.likes[contact.identifier]?.append(friendLiking)
                         print(contact.likes)
                     }
                 }

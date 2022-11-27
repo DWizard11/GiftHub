@@ -15,8 +15,11 @@ struct ContactInfo : Identifiable, Codable{
     var birthday: DateComponents?
     var isStarred: Bool
     var identifier: String
-    var likes: String
+    var likes: [String: [String]] = [:]
 }
+
+
+
 
 class FetchContacts {
     
@@ -34,7 +37,7 @@ class FetchContacts {
                 }
                 
                 if isNew && contact.birthday != nil {
-                    contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, birthday: contact.birthday, isStarred: false, identifier: contact.identifier, likes: ""))
+                    contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, birthday: contact.birthday, isStarred: false, identifier: contact.identifier, likes: [contact.identifier: [""]]))
 
                 }
                 

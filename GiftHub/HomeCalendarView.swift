@@ -7,28 +7,28 @@
 
 import SwiftUI
 
-extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int) {
-        assert(red >= 0 && red <= 255, "Invalid red component")
-        assert(green >= 0 && green <= 255, "Invalid green component")
-        assert(blue >= 0 && blue <= 255, "Invalid blue component")
-        
-        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-    }
-    
-    convenience init(rgb: Int) {
-        self.init(
-            red: (rgb >> 16) & 0xFF,
-            green: (rgb >> 8) & 0xFF,
-            blue: rgb & 0xFF
-        )
-    }
-}
-let color2 = UIColor(red: 255, green: 248, blue: 211)
-let color3 = Color(red: 255/255, green: 240/255, blue: 172/255)
-let color4 = Color(red: 255/255, green: 255/255, blue: 109/255)
-
-
+//extension UIColor {
+//    convenience init(red: Int, green: Int, blue: Int) {
+//        assert(red >= 0 && red <= 255, "Invalid red component")
+//        assert(green >= 0 && green <= 255, "Invalid green component")
+//        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+//
+//        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+//    }
+//
+//    convenience init(rgb: Int) {
+//        self.init(
+//            red: (rgb >> 16) & 0xFF,
+//            green: (rgb >> 8) & 0xFF,
+//            blue: rgb & 0xFF
+//        )
+//    }
+//}
+//let color2 = UIColor(red: 255, green: 248, blue: 211)
+//let color3 = Color(red: 255/255, green: 240/255, blue: 172/255)
+//let color4 = Color(red: 255/255, green: 255/255, blue: 109/255)
+//
+//
 
 struct HomeCalendarView: View {
     
@@ -41,30 +41,32 @@ struct HomeCalendarView: View {
     @State private var draggingItem = 0.0
     @ObservedObject var contactsManager: ContactInfoManager
     
+    @Environment(\.colorScheme) var currentMode
+    
     
     var body: some View {
-        let currentMonth = calendar.component(.month, from: date)
+        let currentMonth = getMonth(date: date)
+        
         NavigationView {
             ZStack {
             //    Color(color2)
            //         .edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text("GiftDuck 🦆!")
-                        .frame(width: 360, height: 50, alignment: .topLeading)
+//                    Text("GiftDuck 🦆!")
+//                        .frame(width: 360, height: 50, alignment: .topLeading)
 
                     DatePicker("Enter your birthday", selection: $selectedDate)
                             .datePickerStyle(GraphicalDatePickerStyle())
                             .frame(maxHeight: 400)
-                            .background(.white)
-                            .padding()
-                    Text("In the month of \(currentMonth)")
+                            
+                    Text("\(currentMonth)")
    
                     VStack{
-                        Text("")
+                        
                         Text("Upcoming Birthdays!")
                             .font(.title)
                             .bold()
-                            .frame(width: 360, height: 50, alignment: .leading)
+                            .frame(alignment: .leading)
                             .padding()
 
                     }
@@ -74,18 +76,22 @@ struct HomeCalendarView: View {
                             if contact.birthday?.month == currentMonth {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 15)
-                                        .foregroundColor(color3)
                                         .frame(width: 350, height: 75)
+                                        .foregroundColor(currentMode == .dark ? Color.black : Color.white)
+                                        .padding()
                                     HStack{
-                                        Circle()
-                                            .fill(.white)
-                                            .frame(width: 100, height: 50)
+                                        Image(systemName: "person.circle.fill")
+                                            .resizable()
+                                            .frame(width: 40, height: 40)
+                                            .padding()
                                         
                                         VStack {
                                             Text("\(contact.firstName) \(contact.lastName)")
+                                                
                                             Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
                                         }
                                     }
+                                    .cornerRadius(15)
                                 }
                             }
                             
@@ -93,9 +99,7 @@ struct HomeCalendarView: View {
                     }
                 }
             }
-            .navigationTitle("Welcome to")
-                .font(.largeTitle)
-                .bold()
+            .navigationTitle("Welcome to GiftDuck 🦆!")
         }
     }
 }
@@ -105,12 +109,12 @@ struct HomeCalendarView_Previews: PreviewProvider {
     }
 }
 
-private func getMonth(date: Date) -> String {
+private func getMonth(date: Date) -> Int {
     
     let calendar = Calendar.current
     let components = calendar.dateComponents([.month], from:  date)
     let month = components.month
     
-    return "\(month!)"
+    return month ?? 0
     
 }

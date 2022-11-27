@@ -92,12 +92,12 @@ struct FriendDetailView: View {
                             Text("Add your Friend's likes!")
                             
                         }
-                        ForEach([contact.likes], id: \.self) { like in
+                        
+                        // contact.likes = [id: ["", ""]]
+                        ForEach(contact.likes[contact.identifier] ?? [], id: \.self) { like in
                             HStack {
                                 Image(systemName: "circle.fill")
                                 Text(like)
-                                
-                                
                             }
                         }
                         .onDelete { indexSet in
@@ -168,7 +168,7 @@ struct FriendDetailView: View {
             .sheet(item: $currentPage) { item in
                 switch item {
                 case .likes:
-                    NewLikingView(contact: ContactInfo(firstName: "", lastName: "", isStarred: true, identifier: "", likes: ""), passedValue: $valueToPass)
+                    NewLikingView(contact: ContactInfo(firstName: "", lastName: "", isStarred: true, identifier: "", likes: ["": [""]]), passedValue: $valueToPass)
                 case .dislikes:
                     NewDislikeView(passedValue: $valueToPass, friendDislikes: $frienddislikeManager.frienddislikes)
                 case .giftIdeas:
@@ -185,7 +185,7 @@ struct FriendDetailView: View {
 
 struct FriendDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true, identifier: "", likes: "")
+        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true, identifier: "", likes: ["": [""]])
         )
     }
 }

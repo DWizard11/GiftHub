@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var date = Date()
     @StateObject var contactsManager = ContactInfoManager()
     
+    
     var body: some View {
         TabView {
             HomeCalendarView(contactsManager: ContactInfoManager())
@@ -36,5 +37,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
+        ContentView()
+            .preferredColorScheme(.light)
     }
 }
