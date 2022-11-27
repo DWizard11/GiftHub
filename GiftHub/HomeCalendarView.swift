@@ -108,9 +108,9 @@ struct HomeCalendarView_Previews: PreviewProvider {
 private func getMonth(date: Date) -> String {
     
     let calendar = Calendar.current
-    let components = calendar.dateComponents([.month]), from: date)
+    let components = calendar.dateComponents([.month], from:  date)
     let month = components.month
-
+    
     return "\(month!)"
-
-]
+    
+}
