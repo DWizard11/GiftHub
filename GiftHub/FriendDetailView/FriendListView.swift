@@ -57,32 +57,34 @@ struct FriendListView: View {
                 
                 Form {
                     Section("Starred") {
-                        ForEach (self.contactsManager.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
-                            if contact.isStarred {
-                                NavigationLink {
-                                    FriendDetailView(contact: contact, contactManager: ContactInfoManager())
-                                } label: {
-                                    Image(systemName: "star.fill")
-                                        .onTapGesture {
-                                            let contactIndex = self.contactsManager.contacts.firstIndex {
-                                                $0.id == contact.id
-                                            }!
-                                            withAnimation {
-                                                contactsManager.contacts[contactIndex].isStarred.toggle()
+                        ForEach ($contactsManager.contacts) { $contact in
+                            if searchText.isEmpty ? true : "\(contact)".lowercased().contains(self.searchText.lowercased()) {
+                                if contact.isStarred {
+                                    NavigationLink {
+                                        FriendDetailView(contact: $contact, contactManager: contactsManager)
+                                    } label: {
+                                        Image(systemName: "star.fill")
+                                            .onTapGesture {
+                                                let contactIndex = self.contactsManager.contacts.firstIndex {
+                                                    $0.id == contact.id
+                                                }!
+                                                withAnimation {
+                                                    contactsManager.contacts[contactIndex].isStarred.toggle()
+                                                }
                                             }
-                                        }
-                                    Text("\(contact.firstName) \(contact.lastName)")
-                                    Spacer()
+                                        Text("\(contact.firstName) \(contact.lastName)")
+                                        Spacer()
+                                    }
                                 }
                             }
                         }
                     }
                     
                     Section("Others") {
-                        ForEach (self.contactsManager.contacts.filter({ (cont) -> Bool in self.searchText.isEmpty ? true : "\(cont)".lowercased().contains(self.searchText.lowercased())})) { contact in
-                            if !contact.isStarred {
+                        ForEach ($contactsManager.contacts) { $contact in
+                            if self.searchText.isEmpty ? true : "\(contact)".lowercased().contains(self.searchText.lowercased()) && !contact.isStarred {
                                 NavigationLink {
-                                    FriendDetailView(contact: contact, contactManager: ContactInfoManager())
+                                    FriendDetailView(contact: $contact, contactManager: ContactInfoManager())
                                 } label: {
                                     Image(systemName: "star")
                                         .onTapGesture {

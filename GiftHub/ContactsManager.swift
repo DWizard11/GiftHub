@@ -15,11 +15,11 @@ struct ContactInfo : Identifiable, Codable{
     var birthday: DateComponents?
     var isStarred: Bool
     var identifier: String
-    var likes: [String: [String]] = [:]
+    var likes: [String]
+    var dislikes: [String]
+    var giftIdeas: [String]
+    var hasBeenBought: Bool 
 }
-
-
-// var friendDetails: [String: [String]] = [:]
 
 class FetchContacts {
     
@@ -31,15 +31,15 @@ class FetchContacts {
             try CNContactStore().enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
                var isNew = true
                 for person in currentContacts {
-                    if contact.identifier == person.identifier{
+                    if contact.identifier == person.identifier {
                         isNew = false
                     }
                 }
                 
                 if isNew && contact.birthday != nil {
-                    contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, birthday: contact.birthday, isStarred: false, identifier: contact.identifier, likes: [contact.identifier: [""]]))
-                    //friendDetails = [contact.identifier: []]
-
+                    contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, birthday: contact.birthday, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false))
+                    
+                    
                 }
                 
                

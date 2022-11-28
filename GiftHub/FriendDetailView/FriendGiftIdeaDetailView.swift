@@ -9,20 +9,37 @@ import SwiftUI
 
 struct FriendGiftIdeaDetailView: View {
     
-    @Binding var friendgiftidea: FriendGiftIdea
-    @State var friendgiftideaprice = ""
+    @State var giftIdea: String
+    @Binding var contact: ContactInfo
+    @ObservedObject var contactManager: ContactInfoManager
+    @State var friendGiftIdeaPrice = ""
     @State var friendgiftideaselectedquantity = 1
     @State var friendgiftidealocation = ""
     @State var friendgiftideaproduct = ""
     @State var friendgiftideaselectedmeans = "Online"
     @State var friendgiftideameans = ["Online", "In-person Visit", "Via Amazon"]
     @State var friendgiftideanotes = ""
+    var friend: ContactInfo {
+        get {
+            let contactIndex = self.contactManager.contacts.firstIndex {
+                $0.id == contact.id
+            }!
+            
+            return self.contactManager.contacts[contactIndex]
+        }
+        set {
+            let contactIndex = self.contactManager.contacts.firstIndex {
+                $0.id == contact.id
+            }!
+            self.contactManager.contacts[contactIndex] = newValue
+        }
+    }
     
     var body: some View {
         Form {
             Section("About Gift") {
-                TextField("Gift Idea Title", text: $friendgiftidea.title)
-                TextField("Price", text: $friendgiftideaprice)
+                TextField("Gift Idea Title", text: $giftIdea)
+                TextField("Price", text: $friendGiftIdeaPrice)
                     .font(.headline)
                 Picker("Quantity", selection: $friendgiftideaselectedquantity) {
                     ForEach(1 ... 150, id: \.self) {
@@ -52,16 +69,11 @@ struct FriendGiftIdeaDetailView: View {
                     .padding(.bottom)
                     .padding(.bottom)
             }
-            Button("Has been \(friendgiftidea.hasBeenBought ? "not bought" : "bought")") {
-                    friendgiftidea.hasBeenBought.toggle()
+            Button("Has been \(contact.hasBeenBought ? "not bought" : "bought")") {
+                    contact.hasBeenBought.toggle()
             }
         }
     }
 }
 
 
-struct FriendGiftIdeaDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        FriendGiftIdeaDetailView(friendgiftidea: .constant(FriendGiftIdea(title: "Cake")))
-    }
-}

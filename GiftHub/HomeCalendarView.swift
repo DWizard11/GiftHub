@@ -45,7 +45,6 @@ struct HomeCalendarView: View {
     
     
     var body: some View {
-        let currentMonth = getMonth(date: date)
         
         NavigationView {
             ZStack {
@@ -60,7 +59,6 @@ struct HomeCalendarView: View {
                             .frame(maxHeight: 400)
                             .background(.white)
                             .padding()
-                    Text("In the month of\(getMonth(date:selectedDate)):")
    
                     VStack{
                         
@@ -74,7 +72,7 @@ struct HomeCalendarView: View {
                     
                     ScrollView(showsIndicators: false) {
                         ForEach(self.contactsManager.contacts) { contact in
-                            if contact.birthday?.month == currentMonth {
+                            if contact.birthday?.month == getMonth(date: selectedDate) {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 15)
                                         .frame(width: 350, height: 75)

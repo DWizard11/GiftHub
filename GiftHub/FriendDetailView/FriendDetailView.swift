@@ -41,50 +41,67 @@ struct FriendDetailView: View {
     @StateObject var friendgiftideaManager = FriendGiftIdeaManager()
     @State var currentPage: Page?
     @State var valueToPass = 10
-    var contact: ContactInfo
+    @Binding var contact: ContactInfo
     @ObservedObject var contactManager: ContactInfoManager
     
-    var body: some View {
-        
+    var friend: ContactInfo {
+        get {
+            let contactIndex = self.contactManager.contacts.firstIndex {
+                $0.id == contact.id
+            }!
+            
+            return self.contactManager.contacts[contactIndex]
+        }
+        set {
+            let contactIndex = self.contactManager.contacts.firstIndex {
+                $0.id == contact.id
+            }!
+            self.contactManager.contacts[contactIndex] = newValue
+        }
+    }
+    
+    func setFriend(friend: ContactInfo) {
         let contactIndex = self.contactManager.contacts.firstIndex {
             $0.id == contact.id
         }!
-        
-        var friend = self.contactManager.contacts[contactIndex]
+        self.contactManager.contacts[contactIndex] = friend
+    }
+    
+    var body: some View {
         
         NavigationView {
             Form {
                 Section("About") {
-                    
-                    Text("\(friend.firstName) \(friend.lastName)")
+
+                    Text("\(contact.firstName) \(contact.lastName)")
                         .font(.headline)
-                    
+
                     HStack {
                         Text("Birthday")
                         Spacer()
-                        Text(verbatim: "\(friend.birthday?.day ?? 0)/\(friend.birthday?.month ?? 0)/\(friend.birthday?.year ?? 0)")
+                        Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
                     }
-                    
+
                     Picker("Age", selection: $selectedAge) {
                         ForEach(1 ... 99, id: \.self) {
                             Text("\($0)")
                         }
                     }
-                    
+
                     Picker("Relationship", selection: $selectedRelationship) {
                         ForEach(relationships, id: \.self) { relationship in
                             Text(relationship)
                         }
                     }
-                        DatePicker("Birthday Alert 🎂:", selection: $selectedDate, in: Date()...)
-                        Button("Schedule alert") {
-                            notify.sendNotification(date: selectedDate,
-                                                    type: "date",
-                                                    title: "Hello!",
-                                                    body: "It's \(friend.firstName)'s Birthday!🎉🎂")
-                            notify.askPermission()
-                        }
-                    
+                    DatePicker("Birthday Alert 🎂:", selection: $selectedDate, in: Date()...)
+                    Button("Schedule alert") {
+                        notify.sendNotification(date: selectedDate,
+                                                type: "date",
+                                                title: "Hello!",
+                                                body: "It's \(contact.firstName)'s Birthday!🎉🎂")
+                        notify.askPermission()
+                    }
+
                     //            Picker("Notification", selection: $selectedAlertDate) {
                     //               ForEach(alertdates, id: \.self) { alertdate in
                     //                   Text(alertdate)
@@ -95,24 +112,23 @@ struct FriendDetailView: View {
                     List {
                         Button {
                             currentPage = .likes
-                            print(friend.likes)
-                        } label: {
+                         } label: {
                             Text("Add your Friend's likes!")
-                            
                         }
-                        
-                        // contact.likes = [id: ["", ""]]
-                        ForEach(friend.likes[friend.identifier] ?? [], id: \.self) { like in
+                        ForEach(contact.likes, id: \.self) { like in
                             HStack {
                                 Image(systemName: "circle.fill")
                                 Text(like)
                             }
                         }
                         .onDelete { indexSet in
-                            friendlikingManager.friendlikings.remove(atOffsets: indexSet)
+                            contact.likes.remove(atOffsets: indexSet)
                         }
                         .onMove { indices, newOffset in
-                            friendlikingManager.friendlikings.move(fromOffsets: indices, toOffset: newOffset)
+                            contact.likes.move(fromOffsets: indices, toOffset: newOffset)
+                        }
+                        .onChange(of: friend.likes) { newItem in
+                            print(newItem)
                         }
                         
                     }
@@ -121,24 +137,27 @@ struct FriendDetailView: View {
                     List {
                         Button {
                             currentPage = .dislikes
-                            print(frienddislikeManager.frienddislikes)
+                            print(contact.dislikes)
                         } label: {
                             Text("Add your Friend's dislikes!")
                         }
-                        ForEach($frienddislikeManager.frienddislikes) { $frienddislike in
+                        ForEach(contact.dislikes, id: \.self) { dislike in
                             HStack {
                                 Image(systemName: "circle.fill")
-                                Text(frienddislike.title)
-                                
+                                Text(dislike)
+
                             }
                         }
                         .onDelete { indexSet in
-                            frienddislikeManager.frienddislikes.remove(atOffsets: indexSet)
+                            contact.dislikes.remove(atOffsets: indexSet)
                         }
                         .onMove { indices, newOffset in
-                            frienddislikeManager.frienddislikes.move(fromOffsets: indices, toOffset: newOffset)
+                            contact.dislikes.move(fromOffsets: indices, toOffset: newOffset)
                         }
-                        
+                        .onChange(of: contact.dislikes) { newItem in
+                            print(newItem)
+                        }
+
                     }
                 }
                 Section("Gift Ideas") {
@@ -148,14 +167,14 @@ struct FriendDetailView: View {
                         } label: {
                             Text("Add your Friend's gift ideas!")
                         }
-                        ForEach($friendgiftideaManager.friendgiftideas) { $friendgiftidea in
+                        ForEach(contact.giftIdeas, id: \.self) { giftIdea in
                             NavigationLink {
-                                FriendGiftIdeaDetailView(friendgiftidea: $friendgiftidea)
+                                FriendGiftIdeaDetailView(giftIdea: giftIdea, contact: $contact, contactManager: contactManager)
                             } label: {
                                 HStack {
-                                    Image(systemName: friendgiftidea.hasBeenBought ? "checkmark.circle.fill" : "circle")
-                                    Text(friendgiftidea.title)
-                                        .strikethrough(friendgiftidea.hasBeenBought)
+                                    Image(systemName: contact.hasBeenBought ? "checkmark.circle.fill" : "circle")
+                                    Text(giftIdea)
+                                        .strikethrough(contact.hasBeenBought)
                                 }
                             }
                         }
@@ -176,26 +195,13 @@ struct FriendDetailView: View {
             .sheet(item: $currentPage) { item in
                 switch item {
                 case .likes:
-                    NewLikingView(contact: friend, contactManager: ContactInfoManager(), passedValue: $valueToPass)
+                    NewLikingView(contactManager: contactManager, passedValue: $valueToPass, likes: $contact.likes)
                 case .dislikes:
-                    NewDislikeView(passedValue: $valueToPass, friendDislikes: $frienddislikeManager.frienddislikes)
+                    NewDislikeView(contactManager: contactManager, passedValue: $valueToPass, dislike: $contact.dislikes)
                 case .giftIdeas:
-                    NewGiftIdeaView(friendgiftideas: $friendgiftideaManager.friendgiftideas, passedValue: $valueToPass)
+                    NewGiftIdeaView(passedValue: $valueToPass, giftIdeas: $contact.giftIdeas, contactManager: contactManager)
                 }
             }
         }
-        
     }
 }
-
-
-
-
-struct FriendDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        FriendDetailView(contact: .init(firstName: "", lastName: "", isStarred: true, identifier: "", likes: ["": [""]]), contactManager: ContactInfoManager())
-        
-    }
-}
-
-

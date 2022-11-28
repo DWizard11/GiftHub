@@ -13,30 +13,33 @@ import SwiftUI
 struct NewDislikeView: View {
     
     @State var friendDislike = ""
+    @ObservedObject var contactManager: ContactInfoManager
     @Binding var passedValue: Int
-    @Binding var friendDislikes: [FriendDislike]
+    @Binding var dislike: [String]
     @Environment(\.dismiss) var dismiss
-
+    
     
     var body: some View {
         ZStack {
             Form {
-                Section("Add Dislike") {
-                    TextField("Add Dislike", text: $friendDislike)
+                Section("Add Dislikes") {
+                    TextField("Add Dislikes", text: $friendDislike)
                         .font(.headline)
+                    Button("Save Liking") {
+                        dislike.append(friendDislike)
+                        //                        print(likes)
+                    }
                 }
             }
             .padding()
             Button {
-                friendDislikes.append(FriendDislike(title: friendDislike))
                 dismiss()
             } label: {
-                Text("Save and Close")
+                Text("Close")
             }
             .buttonStyle(.bordered)
-                
             
         }
+        
     }
 }
-

@@ -11,25 +11,29 @@ import SwiftUI
 
 struct NewGiftIdeaView: View {
     
-    @Binding var friendgiftideas: [FriendGiftIdea]
     @Binding var passedValue: Int
-    @State var friendgiftidea = ""
+    @State var friendGiftIdea = ""
+    @Binding var giftIdeas: [String]
+    @ObservedObject var contactManager: ContactInfoManager
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
             Form {
                 Section("Add Gift Idea") {
-                    TextField("Add Gift Idea", text: $friendgiftidea)
+                    TextField("Add Gift Idea", text: $friendGiftIdea)
                         .font(.headline)
+                    Button("Save Gift Idea") {
+                        giftIdeas.append(friendGiftIdea)
+//                        print(likes)
+                    }
                 }
             }
             .padding()
             Button {
-                friendgiftideas.append(FriendGiftIdea(title: friendgiftidea))
                 dismiss()
             } label: {
-                Text("Save and Close")
+                Text("Close")
             }
             .buttonStyle(.bordered)
                 
