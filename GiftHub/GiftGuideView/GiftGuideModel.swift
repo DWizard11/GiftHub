@@ -33,7 +33,7 @@ var GGgiftsone = [GGGift(id: 0, title: "Air Force 1s", imageName: "1"),
                 GGGift(id: 17, title: "Color Changing Cinema Lightbox", imageName: "18"),
                 GGGift(id: 18, title: "Netflix Subscriptions", imageName: "19"),
                   GGGift(id: 19, title: "Puzzles(^^Katamino Game)", imageName: "20"),
-                GGGift(id: 20, title: "Stationary", imageName: "21"),
+                GGGift(id: 20, title: "Stationery", imageName: "21"),
                 GGGift(id: 21, title: "Water Bottle", imageName: "22"),
 ]
 
