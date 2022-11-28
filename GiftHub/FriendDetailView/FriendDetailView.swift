@@ -69,138 +69,137 @@ struct FriendDetailView: View {
     
     var body: some View {
         
-        NavigationView {
-            Form {
-                Section("About") {
-
-                    Text("\(contact.firstName) \(contact.lastName)")
-                        .font(.headline)
-
-                    HStack {
-                        Text("Birthday")
-                        Spacer()
-                        Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
-                    }
-
-                    Picker("Age", selection: $selectedAge) {
-                        ForEach(1 ... 99, id: \.self) {
-                            Text("\($0)")
-                        }
-                    }
-
-                    Picker("Relationship", selection: $selectedRelationship) {
-                        ForEach(relationships, id: \.self) { relationship in
-                            Text(relationship)
-                        }
-                    }
-                    DatePicker("Birthday Alert 🎂:", selection: $selectedDate, in: Date()...)
-                    Button("Schedule alert") {
-                        notify.sendNotification(date: selectedDate,
-                                                type: "date",
-                                                title: "Hello!",
-                                                body: "It's \(contact.firstName)'s Birthday!🎉🎂")
-                        notify.askPermission()
-                    }
-
-                    //            Picker("Notification", selection: $selectedAlertDate) {
-                    //               ForEach(alertdates, id: \.self) { alertdate in
-                    //                   Text(alertdate)
-                    //                  }
-                    //             }
+        Form {
+            Section("About") {
+                
+                Text("\(contact.firstName) \(contact.lastName)")
+                    .font(.headline)
+                
+                HStack {
+                    Text("Birthday")
+                    Spacer()
+                    Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
                 }
-                Section("Likings") {
-                    List {
-                        Button {
-                            currentPage = .likes
-                         } label: {
-                            Text("Add your Friend's likes!")
-                        }
-                        ForEach(contact.likes, id: \.self) { like in
-                            HStack {
-                                Image(systemName: "circle.fill")
-                                Text(like)
-                            }
-                        }
-                        .onDelete { indexSet in
-                            contact.likes.remove(atOffsets: indexSet)
-                        }
-                        .onMove { indices, newOffset in
-                            contact.likes.move(fromOffsets: indices, toOffset: newOffset)
-                        }
-                        .onChange(of: friend.likes) { newItem in
-                            print(newItem)
-                        }
-                        
+                
+                Picker("Age", selection: $selectedAge) {
+                    ForEach(1 ... 99, id: \.self) {
+                        Text("\($0)")
                     }
                 }
-                Section("Dislikes") {
-                    List {
-                        Button {
-                            currentPage = .dislikes
-                            print(contact.dislikes)
+                
+                Picker("Relationship", selection: $selectedRelationship) {
+                    ForEach(relationships, id: \.self) { relationship in
+                        Text(relationship)
+                    }
+                }
+                DatePicker("Birthday Alert 🎂:", selection: $selectedDate, in: Date()...)
+                Button("Schedule alert") {
+                    notify.sendNotification(date: selectedDate,
+                                            type: "date",
+                                            title: "Hello!",
+                                            body: "It's \(contact.firstName)'s Birthday!🎉🎂")
+                    notify.askPermission()
+                }
+                
+                //            Picker("Notification", selection: $selectedAlertDate) {
+                //               ForEach(alertdates, id: \.self) { alertdate in
+                //                   Text(alertdate)
+                //                  }
+                //             }
+            }
+            Section("Likings") {
+                List {
+                    Button {
+                        currentPage = .likes
+                    } label: {
+                        Text("Add your Friend's likes!")
+                    }
+                    ForEach(contact.likes, id: \.self) { like in
+                        HStack {
+                            Image(systemName: "circle.fill")
+                            Text(like)
+                        }
+                    }
+                    .onDelete { indexSet in
+                        contact.likes.remove(atOffsets: indexSet)
+                    }
+                    .onMove { indices, newOffset in
+                        contact.likes.move(fromOffsets: indices, toOffset: newOffset)
+                    }
+                    .onChange(of: friend.likes) { newItem in
+                        print(newItem)
+                    }
+                    
+                }
+            }
+            Section("Dislikes") {
+                List {
+                    Button {
+                        currentPage = .dislikes
+                        print(contact.dislikes)
+                    } label: {
+                        Text("Add your Friend's dislikes!")
+                    }
+                    ForEach(contact.dislikes, id: \.self) { dislike in
+                        HStack {
+                            Image(systemName: "circle.fill")
+                            Text(dislike)
+                            
+                        }
+                    }
+                    .onDelete { indexSet in
+                        contact.dislikes.remove(atOffsets: indexSet)
+                    }
+                    .onMove { indices, newOffset in
+                        contact.dislikes.move(fromOffsets: indices, toOffset: newOffset)
+                    }
+                    .onChange(of: contact.dislikes) { newItem in
+                        print(newItem)
+                    }
+                    
+                }
+            }
+            Section("Gift Ideas") {
+                List {
+                    Button {
+                        currentPage = .giftIdeas
+                    } label: {
+                        Text("Add your Friend's gift ideas!")
+                    }
+                    ForEach(contact.giftIdeas, id: \.self) { giftIdea in
+                        NavigationLink {
+                            FriendGiftIdeaDetailView(giftIdea: giftIdea, contact: $contact, contactManager: contactManager)
                         } label: {
-                            Text("Add your Friend's dislikes!")
-                        }
-                        ForEach(contact.dislikes, id: \.self) { dislike in
                             HStack {
-                                Image(systemName: "circle.fill")
-                                Text(dislike)
-
+                                Image(systemName: contact.hasBeenBought ? "checkmark.circle.fill" : "circle")
+                                Text(giftIdea)
+                                    .strikethrough(contact.hasBeenBought)
                             }
                         }
-                        .onDelete { indexSet in
-                            contact.dislikes.remove(atOffsets: indexSet)
-                        }
-                        .onMove { indices, newOffset in
-                            contact.dislikes.move(fromOffsets: indices, toOffset: newOffset)
-                        }
-                        .onChange(of: contact.dislikes) { newItem in
-                            print(newItem)
-                        }
-
                     }
-                }
-                Section("Gift Ideas") {
-                    List {
-                        Button {
-                            currentPage = .giftIdeas
-                        } label: {
-                            Text("Add your Friend's gift ideas!")
-                        }
-                        ForEach(contact.giftIdeas, id: \.self) { giftIdea in
-                            NavigationLink {
-                                FriendGiftIdeaDetailView(giftIdea: giftIdea, contact: $contact, contactManager: contactManager)
-                            } label: {
-                                HStack {
-                                    Image(systemName: contact.hasBeenBought ? "checkmark.circle.fill" : "circle")
-                                    Text(giftIdea)
-                                        .strikethrough(contact.hasBeenBought)
-                                }
-                            }
-                        }
-                        .onDelete { indexSet in
-                            friendgiftideaManager.friendgiftideas.remove(atOffsets: indexSet)
-                        }
-                        .onMove { indices, newOffset in
-                            friendgiftideaManager.friendgiftideas.move(fromOffsets: indices, toOffset: newOffset)
-                        }
+                    .onDelete { indexSet in
+                        friendgiftideaManager.friendgiftideas.remove(atOffsets: indexSet)
+                    }
+                    .onMove { indices, newOffset in
+                        friendgiftideaManager.friendgiftideas.move(fromOffsets: indices, toOffset: newOffset)
                     }
                 }
             }
-            .toolbar{
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
+        }
+        .toolbar{
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
             }
-            .sheet(item: $currentPage) { item in
-                switch item {
-                case .likes:
-                    NewLikingView(contactManager: contactManager, passedValue: $valueToPass, likes: $contact.likes)
-                case .dislikes:
-                    NewDislikeView(contactManager: contactManager, passedValue: $valueToPass, dislike: $contact.dislikes)
-                case .giftIdeas:
-                    NewGiftIdeaView(passedValue: $valueToPass, giftIdeas: $contact.giftIdeas, contactManager: contactManager)
-                }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(item: $currentPage) { item in
+            switch item {
+            case .likes:
+                NewLikingView(contactManager: contactManager, passedValue: $valueToPass, likes: $contact.likes)
+            case .dislikes:
+                NewDislikeView(contactManager: contactManager, passedValue: $valueToPass, dislike: $contact.dislikes)
+            case .giftIdeas:
+                NewGiftIdeaView(passedValue: $valueToPass, giftIdeas: $contact.giftIdeas, contactManager: contactManager)
             }
         }
     }

@@ -33,6 +33,7 @@ class FetchContacts {
                 for person in currentContacts {
                     if contact.identifier == person.identifier {
                         isNew = false
+                        
                     }
                 }
                 

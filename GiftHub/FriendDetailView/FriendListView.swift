@@ -52,7 +52,7 @@ struct FriendListView: View {
                         }
                     }
                 }
-                .padding([.leading, .trailing])
+                .padding([.leading, .trailing,.top])
                 
                 
                 Form {
@@ -73,7 +73,6 @@ struct FriendListView: View {
                                                 }
                                             }
                                         Text("\(contact.firstName) \(contact.lastName)")
-                                        Spacer()
                                     }
                                 }
                             }
@@ -83,19 +82,21 @@ struct FriendListView: View {
                     Section("Others") {
                         ForEach ($contactsManager.contacts) { $contact in
                             if self.searchText.isEmpty ? true : "\(contact)".lowercased().contains(self.searchText.lowercased()) && !contact.isStarred {
-                                NavigationLink {
-                                    FriendDetailView(contact: $contact, contactManager: ContactInfoManager())
-                                } label: {
-                                    Image(systemName: "star")
-                                        .onTapGesture {
-                                            let contactIndex = self.contactsManager.contacts.firstIndex {
-                                                $0.id == contact.id
-                                            }!
-                                            withAnimation {
-                                                self.contactsManager.contacts[contactIndex].isStarred.toggle()
+                                if !contact.isStarred{
+                                    NavigationLink {
+                                        FriendDetailView(contact: $contact, contactManager: contactsManager)
+                                    } label: {
+                                        Image(systemName: "star")
+                                            .onTapGesture {
+                                                let contactIndex = self.contactsManager.contacts.firstIndex {
+                                                    $0.id == contact.id
+                                                }!
+                                                withAnimation {
+                                                    contactsManager.contacts[contactIndex].isStarred.toggle()
+                                                }
                                             }
-                                        }
-                                    Text("\(contact.firstName) \(contact.lastName)")
+                                        Text("\(contact.firstName) \(contact.lastName)")
+                                    }
                                 }
                             }
                         }
@@ -111,7 +112,7 @@ struct FriendListView: View {
     
     func getContacts() {
         DispatchQueue.main.async {
-            self.contactsManager.contacts = FetchContacts().fetchingContacts(currentContacts: contactsManager.contacts)
+            contactsManager.contacts = FetchContacts().fetchingContacts(currentContacts: contactsManager.contacts)
             print("Test")
         }
     }
