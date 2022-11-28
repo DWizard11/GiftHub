@@ -25,12 +25,12 @@ struct FriendListView: View {
                     HStack {
                         //search bar magnifying glass image
                         Image(systemName: "magnifyingglass").foregroundColor(.secondary)
-                        
+
                         //search bar text field
                         TextField("Search", text: self.$searchText, onEditingChanged: { isEditing in
                             self.showCancelButton = true
                         })
-                        
+
                         // x Button
                         Button(action: {
                             self.searchText = ""
@@ -43,7 +43,7 @@ struct FriendListView: View {
                     .padding(8)
                     .background(Color(.secondarySystemBackground))
                     .cornerRadius(8)
-                    
+
                     // Cancel Button
                     if self.showCancelButton  {
                         Button("Cancel") {
@@ -73,6 +73,7 @@ struct FriendListView: View {
                                                 }
                                             }
                                         Text("\(contact.firstName) \(contact.lastName)")
+                                        
                                     }
                                 }
                             }
@@ -102,7 +103,9 @@ struct FriendListView: View {
                         }
                     }
                     .onAppear {
-                        self.requestAccess()
+                        Task{
+                            await self.requestAccess()
+                        }
                     }
                 }
             }
@@ -110,30 +113,36 @@ struct FriendListView: View {
         }
     }
     
-    func getContacts() {
-        DispatchQueue.main.async {
-            contactsManager.contacts = FetchContacts().fetchingContacts(currentContacts: contactsManager.contacts)
+    func getContacts() async {
+        Task {
+            contactsManager.contacts = await FetchContacts().fetchingContacts(currentContacts: contactsManager.contacts)
             print("Test")
         }
     }
     
-    func requestAccess() {
+    func requestAccess() async {
         print("Test 2")
         let store = CNContactStore()
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .authorized:
-            self.getContacts()
+            await self.getContacts()
         case .denied:
-            store.requestAccess(for: .contacts) { granted, error in
+            do {
+                let granted = try await store.requestAccess(for: .contacts)
                 if granted {
-                    self.getContacts()
+                    await self.getContacts()
                 }
+            } catch let error {
+                print("Failed", error)
             }
         case .restricted, .notDetermined:
-            store.requestAccess(for: .contacts) { granted, error in
+            do {
+                let granted = try await store.requestAccess(for: .contacts)
                 if granted {
-                    self.getContacts()
+                    await self.getContacts()
                 }
+            } catch let error {
+                print("Failed", error)
             }
         @unknown default:
             print("error")

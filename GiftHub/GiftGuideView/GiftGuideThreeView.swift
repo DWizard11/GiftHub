@@ -5,26 +5,26 @@
 //  Created by TinkerTanker on 25/11/22.
 //
 
-// import SwiftUI
+ import SwiftUI
 
-// struct GiftGuideThreeView: View {
-//     var body: some View {
-//         ScrollView {
+ struct GiftGuideThreeView: View {
+     var body: some View {
+         ScrollView {
           
-//             HStack {
-//                 Text("Gift Ideas for Book Lovers")
-//                     .font(.largeTitle)
-//                     .multilineTextAlignment(.leading)
-//                     .bold()
-//           //      .padding(.top)
-//             }
-//             GiftGuideThreeScrollView()
-//         }
-//     }
-// }
+             HStack {
+                 Text("All Gift Ideas")
+                     .font(.largeTitle)
+                     .multilineTextAlignment(.leading)
+                     .bold()
+           //      .padding(.top)
+             }
+             GiftGuideThreeScrollView()
+         }
+     }
+ }
 
-// struct GiftGuideThreeView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         GiftGuideThreeView()
-//     }
-// }
+ struct GiftGuideThreeView_Previews: PreviewProvider {
+     static var previews: some View {
+         GiftGuideThreeView()
+     }
+ }

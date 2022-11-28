@@ -12,7 +12,7 @@ struct GiftGuideOneView: View {
             ScrollView {
                
                 HStack {
-                    Text("All Gift Ideas")
+                    Text("Gift Ideas for Teens")
                         .font(.largeTitle)
                         .multilineTextAlignment(.leading)
                         .bold()

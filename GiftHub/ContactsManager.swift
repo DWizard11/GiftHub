@@ -33,21 +33,16 @@ struct ContactInfo : Identifiable, Codable{
 
 class FetchContacts {
     
-    func fetchingContacts(currentContacts: [ContactInfo]) -> [ContactInfo]{
+    func fetchingContacts(currentContacts: [ContactInfo]) async -> [ContactInfo]{
         var contacts = currentContacts
         let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactBirthdayKey, CNContactIdentifierKey]
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
         do {
             try CNContactStore().enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
-               var isNew = true
+                var isNew = true
                 for person in currentContacts {
                     if contact.identifier == person.identifier {
                         isNew = false
-//                        let contactIndex = ContactInfoManager().contacts.firstIndex {
-//                            $0.identifier == contact.identifier
-//                        }!
-                        
-                        
                     }
                 }
                 
@@ -57,7 +52,7 @@ class FetchContacts {
                     
                 }
                 
-               
+                
                 
             })
         } catch let error {

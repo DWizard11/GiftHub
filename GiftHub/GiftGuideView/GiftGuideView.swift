@@ -17,14 +17,14 @@ struct GiftGuideView: View {
                 Spacer()
                 Spacer()
                 HStack {
-                    NavigationLink(destination: GiftGuideOneView()) {
+                    NavigationLink(destination: GiftGuideThreeView()) {
                         VStack {
                             Image("AllGiftIdeas")
-                         //       .frame(width: 100, height: 100, alignment: .center)
+                            //       .frame(width: 100, height: 100, alignment: .center)
                                 .resizable()
                                 .scaledToFit()
                             Text("All Gift Ideas")
-                         //       .frame(width: 100, height: 100, alignment: .center)
+                            //       .frame(width: 100, height: 100, alignment: .center)
                                 .font(.title)
                                 .bold()
                                 .foregroundColor(.black)
@@ -34,7 +34,7 @@ struct GiftGuideView: View {
                         .overlay (
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color(white: 0.6), lineWidth: 2)
-                            )
+                        )
                     }
                     NavigationLink(destination: GiftGuideFourView()) {
                         VStack {
@@ -96,16 +96,37 @@ struct GiftGuideView: View {
                         }
                     }
                 }
-                Text("More to \nCome!")
-                    .font(.title)
-                    .bold()
-                    .padding()
-                    .padding()
-                    .frame(width: 170, height: 300, alignment: .center)
-                    .overlay (
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color(white: 0.6), lineWidth: 2)
-            )}
+                HStack {
+                    NavigationLink(destination: GiftGuideOneView()) {
+                        VStack {
+                            Image("ForBookLovers")
+                            //       .frame(width: 100, height: 100, alignment: .center)
+                                .resizable()
+                                .scaledToFit()
+                            Text("Gifts for Book Lovers")
+                            //       .frame(width: 100, height: 100, alignment: .center)
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(.black)
+                        }
+                        .padding()
+                        .frame(width: 170, height: 300, alignment: .center)
+                        .overlay (
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color(white: 0.6), lineWidth: 2)
+                        )
+                    }
+                    Text("More to \nCome!")
+                        .font(.title)
+                        .bold()
+                        .padding()
+                        .padding()
+                        .frame(width: 170, height: 300, alignment: .center)
+                        .overlay (
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color(white: 0.6), lineWidth: 2)
+                        )
+                }}
             .navigationTitle("Gift Guides")
         }
     }
