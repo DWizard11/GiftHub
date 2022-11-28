@@ -28,17 +28,11 @@ struct FriendDetailView: View {
     @State var selectedRelationship = "Friend"
     @State var selectedDate = Date()
     @State var selectedAge = 1
-    @State var friendlikings = [FriendLiking(title: "Apple Products"),
-                                FriendLiking(title: "Soft Toys")
-    ]
+    
     @State var isSheetPresented = false
     @State var isDislikeSheetPresented = false
-    @State var frienddislikes = [FriendDislike(title: "Black stuff"),                                        FriendDislike(title: "Flowers")]
-    @State var friendgiftideas = [FriendGiftIdea(title: "Airpods", hasBeenBought: true), FriendGiftIdea(title: "Duck"), FriendGiftIdea(title: "Bottle")
-    ]
-    @StateObject var friendlikingManager = FriendLikingManager()
-    @StateObject var frienddislikeManager = FriendDislikeManager()
-    @StateObject var friendgiftideaManager = FriendGiftIdeaManager()
+   
+  
     @State var currentPage: Page?
     @State var valueToPass = 10
     @Binding var contact: ContactInfo
@@ -178,10 +172,10 @@ struct FriendDetailView: View {
                         }
                     }
                     .onDelete { indexSet in
-                        friendgiftideaManager.friendgiftideas.remove(atOffsets: indexSet)
+                        contact.giftIdeas.remove(atOffsets: indexSet)
                     }
                     .onMove { indices, newOffset in
-                        friendgiftideaManager.friendgiftideas.move(fromOffsets: indices, toOffset: newOffset)
+                        contact.giftIdeas.move(fromOffsets: indices, toOffset: newOffset)
                     }
                 }
             }

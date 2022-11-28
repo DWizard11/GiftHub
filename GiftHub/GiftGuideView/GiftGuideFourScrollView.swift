@@ -15,26 +15,27 @@ struct GiftGuideFourScrollView: View {
                     ForEach(GGgiftsfour) { num in
                         GeometryReader { proxy in
                             let scale = getScale(proxy: proxy)
-                            VStack(spacing: 8) {
-                                Image(num.imageName)
-                                    .resizable()
-                                 //   .scaledToFill()
-                                    .frame(width: 300)
-                                    .clipped()
-                                    .cornerRadius(8)
-                                    .overlay (
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color(white: 0.4))
-                                        )
-                                    //      .shadow(radius: 3)
-                                Text(num.title)
-                                    .font(.system(size: 16, weight: .semibold))
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(.black)
-                        }
-                        .scaleEffect(.init(width: scale, height: scale))
-                        .animation(.easeOut(duration: 1))
-                        .padding(.vertical)
+                            withAnimation {
+                                VStack(spacing: 8) {
+                                    Image(num.imageName)
+                                        .resizable()
+                                     //   .scaledToFill()
+                                        .frame(width: 300)
+                                        .clipped()
+                                        .cornerRadius(8)
+                                        .overlay (
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .stroke(Color(white: 0.4))
+                                            )
+                                        //      .shadow(radius: 3)
+                                    Text(num.title)
+                                        .font(.system(size: 16, weight: .semibold))
+                                        .multilineTextAlignment(.center)
+                                        .foregroundColor(.black)
+                            }
+                            .scaleEffect(.init(width: scale, height: scale))
+                            .padding(.vertical)
+                            }
                     }
                     .frame(width: 270, height: 420)
                     .padding(.horizontal, 32)
