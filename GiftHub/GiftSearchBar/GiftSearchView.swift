@@ -10,10 +10,12 @@ import SwiftUI
 struct GiftSearchView: View {
     
     @State var searchText = ""
+    @State var isAlertShown = false
    
     var body: some View {
         NavigationView {
             List {
+                Text("Disclaimer: Pressing these will take you to the Amazon Webpage")
                 ForEach(0..<gifts.count, id: \.self){
                     gift in
                         Link(destination: URL(string: giftwebsites[gift])!,label: {

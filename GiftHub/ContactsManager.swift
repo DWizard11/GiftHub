@@ -10,9 +10,19 @@ import Contacts
 
 struct ContactInfo : Identifiable, Codable{
     var id = UUID()
-    var firstName: String
+    var firstName: String 
     var lastName: String
-    var birthday: DateComponents?
+    var birthday: DateComponents? {
+        let predicate = CNContact.predicateForContacts(withIdentifiers: [identifier])
+        let store = CNContactStore()
+        
+        let keysToFetch = [CNContactBirthdayKey] as [CNKeyDescriptor]
+        
+        if let contact = try? store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch).first {
+            return contact.birthday
+        }
+        return nil
+    }
     var isStarred: Bool
     var identifier: String
     var likes: [String]
@@ -33,12 +43,16 @@ class FetchContacts {
                 for person in currentContacts {
                     if contact.identifier == person.identifier {
                         isNew = false
+//                        let contactIndex = ContactInfoManager().contacts.firstIndex {
+//                            $0.identifier == contact.identifier
+//                        }!
+                        
                         
                     }
                 }
                 
                 if isNew && contact.birthday != nil {
-                    contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, birthday: contact.birthday, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false))
+                    ContactInfoManager().contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false))
                     
                     
                 }
