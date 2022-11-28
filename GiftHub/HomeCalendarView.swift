@@ -59,6 +59,7 @@ struct HomeCalendarView: View {
                             .frame(maxHeight: 400)
                             .background(.white)
                             .padding()
+                    //Text("In the \(getMonth(date:selectedDate)) month of the year:")
    
                     VStack{
                         
