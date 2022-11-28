@@ -80,14 +80,14 @@ struct HomeCalendarView: View {
                                     RoundedRectangle(cornerRadius: 15)
                                         .frame(width: 350, height: 75)
                                         .foregroundColor(currentMode == .dark ? Color.white : Color(UIColor.lightGray))
-                                        .padding()
+                            
                                     HStack{
                                         Image(systemName: "person.circle.fill")
                                             .resizable()
                                             .frame(width: 40, height: 40)
                                             .padding()
                                             .frame(alignment: .center)
-                                            .   foregroundColor(currentMode == .dark ? Color.black: Color.black)
+                                            .foregroundColor(currentMode == .dark ? Color.black: Color.black)
                                         
                                         
                                         VStack {
