@@ -20,11 +20,11 @@ struct ContentView: View {
                 }
             FriendListView(contactsManager: contactsManager)
                 .tabItem {
-                    Label("Friends Search", systemImage: "person.fill")
+                    Label("Friends", systemImage: "person.fill")
                 }
             GiftGuideView()
                 .tabItem {
-                    Label("Gift Guides", systemImage: "book")
+                    Label("Gift Suggestions", systemImage: "book")
                 }
             GiftSearchView()
                 .tabItem {
