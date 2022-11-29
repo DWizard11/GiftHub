@@ -550,7 +550,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = GiftDuck;
-				INFOPLIST_KEY_NSContactsUsageDescription = "Contacts needed to access friends";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Contacts will be used to access birthday information in order to import it into GiftDuck";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -590,7 +590,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = GiftDuck;
-				INFOPLIST_KEY_NSContactsUsageDescription = "Contacts needed to access friends";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Contacts will be used to access birthday information in order to import it into GiftDuck";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
