@@ -116,7 +116,7 @@ struct FriendListView: View {
     
     func getContacts() async {
         Task {
-            contactsManager.contacts = await FetchContacts().fetchingContacts(currentContacts: contactsManager.contacts)
+            await FetchContacts().fetchingContacts(contactInfoManager: contactsManager, currentContacts: contactsManager.contacts)
             print("Test")
         }
     }

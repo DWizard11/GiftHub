@@ -33,7 +33,7 @@ struct ContactInfo : Identifiable, Codable{
 
 class FetchContacts {
     
-    func fetchingContacts(currentContacts: [ContactInfo]) async -> [ContactInfo]{
+    func fetchingContacts(contactInfoManager: ContactInfoManager, currentContacts: [ContactInfo]) async -> [ContactInfo]{
         var contacts = currentContacts
         let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactBirthdayKey, CNContactIdentifierKey]
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
@@ -47,19 +47,17 @@ class FetchContacts {
                 }
                 
                 if isNew && contact.birthday != nil {
-                    ContactInfoManager().contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false))
-                    
-                    
+                    DispatchQueue.main.async {
+                        contactInfoManager.contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false))
+                        contactInfoManager.contacts = contactInfoManager.contacts.sorted {
+                                    $0.firstName < $1.firstName
+                        }
+                    }
                 }
-                
-                
                 
             })
         } catch let error {
             print("Failed", error)
-        }
-        contacts = contacts.sorted {
-            $0.firstName < $1.firstName
         }
         return contacts
     }
