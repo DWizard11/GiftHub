@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GiftGuideTwoScrollViewd: View {
+    
+    @Environment(\.colorScheme) var currentMode
+    
     var body: some View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -31,7 +34,7 @@ struct GiftGuideTwoScrollViewd: View {
                                     Text(num.title)
                                         .font(.system(size: 16, weight: .semibold))
                                         .multilineTextAlignment(.center)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(currentMode == .dark ? Color.white : Color.black)
                             }
                             .scaleEffect(.init(width: scale, height: scale))
                             .padding(.vertical)

@@ -53,6 +53,7 @@ struct FriendListView: View {
                     }
                 }
                 .padding([.leading, .trailing,.top])
+                .scrollDismissesKeyboard(.interactively)
                 
                 
                 Form {

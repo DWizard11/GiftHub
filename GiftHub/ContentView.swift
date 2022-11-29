@@ -14,11 +14,11 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            HomeCalendarView(contactsManager: ContactInfoManager())
+            HomeCalendarView(contactsManager: contactsManager)
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
-            FriendListView(contactsManager: ContactInfoManager())
+            FriendListView(contactsManager: contactsManager)
                 .tabItem {
                     Label("Friends Search", systemImage: "person.fill")
                 }

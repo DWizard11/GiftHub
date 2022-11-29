@@ -10,6 +10,7 @@ import SwiftUI
 struct GiftGuideView: View {
     
     //   @State var giftguides = ["Gift Idea for Teens"]
+    @Environment(\.colorScheme) var currentMode
     
     var body: some View {
         NavigationView {
@@ -27,7 +28,7 @@ struct GiftGuideView: View {
                             //       .frame(width: 100, height: 100, alignment: .center)
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(currentMode == .dark ? Color.white : Color.black)
                         }
                         .padding()
                         .frame(width: 170, height: 300, alignment: .center)
@@ -42,11 +43,12 @@ struct GiftGuideView: View {
                             //       .frame(width: 100, height: 100, alignment: .center)
                                 .resizable()
                                 .scaledToFit()
+                                .foregroundColor(currentMode == .dark ? Color.white : Color(UIColor.lightGray))
                             Text("Gifts for Gamers")
                             //       .frame(width: 100, height: 100, alignment: .center)
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(currentMode == .dark ? Color.white : Color.black)
                         }
                         .padding()
                         .frame(width: 170, height: 300, alignment: .center)
@@ -67,7 +69,7 @@ struct GiftGuideView: View {
                             //       .frame(width: 100, height: 100, alignment: .center)
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(currentMode == .dark ? Color.white : Color.black)
                         }
                         .padding()
                         .frame(width: 170, height: 300, alignment: .center)
@@ -85,7 +87,7 @@ struct GiftGuideView: View {
                                 //       .frame(width: 100, height: 100, alignment: .center)
                                     .font(.title)
                                     .bold()
-                                    .foregroundColor(.black)
+                                    .foregroundColor(currentMode == .dark ? Color.white : Color.black)
                             }
                             .padding()
                             .frame(width: 170, height: 300, alignment: .center)
@@ -103,11 +105,11 @@ struct GiftGuideView: View {
                             //       .frame(width: 100, height: 100, alignment: .center)
                                 .resizable()
                                 .scaledToFit()
-                            Text("Gifts for Book Lovers")
+                            Text("Gifts for Teens")
                             //       .frame(width: 100, height: 100, alignment: .center)
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(currentMode == .dark ? Color.white : Color.black)
                         }
                         .padding()
                         .frame(width: 170, height: 300, alignment: .center)
@@ -126,6 +128,7 @@ struct GiftGuideView: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color(white: 0.6), lineWidth: 2)
                         )
+                        .foregroundColor(currentMode == .dark ? Color.white : Color.black)
                 }}
             .navigationTitle("Gift Guides")
         }
