@@ -113,7 +113,6 @@ struct FriendListView: View {
             .navigationTitle("Contacts")
         }
     }
-    
     func getContacts() async {
         Task {
             await FetchContacts().fetchingContacts(contactInfoManager: contactsManager, currentContacts: contactsManager.contacts)

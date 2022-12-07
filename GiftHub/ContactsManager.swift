@@ -7,7 +7,7 @@
 
 import Foundation
 import Contacts
-
+    
 struct ContactInfo : Identifiable, Codable{
     var id = UUID()
     var firstName: String 
