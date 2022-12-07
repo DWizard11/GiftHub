@@ -21,41 +21,6 @@ struct FriendListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    HStack {
-                        //search bar magnifying glass image
-                        Image(systemName: "magnifyingglass").foregroundColor(.secondary)
-
-                        //search bar text field
-                        TextField("Search", text: self.$searchText, onEditingChanged: { isEditing in
-                            self.showCancelButton = true
-                        })
-
-                        // x Button
-                        Button(action: {
-                            self.searchText = ""
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(.secondary)
-                                .opacity(self.searchText == "" ? 0 : 1)
-                        }
-                    }
-                    .padding(8)
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(8)
-
-                    // Cancel Button
-                    if self.showCancelButton  {
-                        Button("Cancel") {
-                            self.searchText = ""
-                            self.showCancelButton = false
-                        }
-                    }
-                }
-                .padding([.leading, .trailing,.top])
-                .scrollDismissesKeyboard(.interactively)
-                
-                
                 Form {
                     Section("Starred") {
                         ForEach ($contactsManager.contacts) { $contact in
@@ -109,6 +74,7 @@ struct FriendListView: View {
                         }
                     }
                 }
+                .searchable(text: $searchText)
             }
             .navigationTitle("Contacts")
         }

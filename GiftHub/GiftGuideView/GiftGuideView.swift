@@ -130,7 +130,7 @@ struct GiftGuideView: View {
                         )
                         .foregroundColor(currentMode == .dark ? Color.white : Color.black)
                 }}
-            .navigationTitle("Gift Guides")
+            .navigationTitle("Gift Suggestions")
         }
     }
 }

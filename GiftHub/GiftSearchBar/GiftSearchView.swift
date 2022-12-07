@@ -16,11 +16,10 @@ struct GiftSearchView: View {
         NavigationView {
             List {
                 Text("Disclaimer: Pressing these will take you to the Amazon Webpage")
-                ForEach(0..<gifts.count, id: \.self){
-                    gift in
-                        Link(destination: URL(string: giftwebsites[gift])!,label: {
+                ForEach([giftIdeasDict], id: \.self){ key, value in
+                        Link(destination: URL(string: value)!,label: {
                             HStack {
-                                Text(gifts[gift].capitalized)
+                                Text(key.capitalized)
                                 Spacer()
                                 Image(systemName: "figure.walk")
                                     .foregroundColor(Color.blue)
