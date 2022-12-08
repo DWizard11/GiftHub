@@ -25,7 +25,7 @@ struct NewDislikeView: View {
                 Section("Add Dislikes") {
                     TextField("Add Dislikes", text: $friendDislike)
                         .font(.headline)
-                    Button("Save Liking") {
+                    Button("Save Dislike") {
                         dislike.append(friendDislike)
                         //                        print(likes)
                     }

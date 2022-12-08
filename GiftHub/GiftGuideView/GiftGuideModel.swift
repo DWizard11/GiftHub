@@ -13,6 +13,7 @@ struct GGGift: Identifiable {
     var imageName: String
 }
 
+
 var GGgiftsone = [GGGift(id: 0, title: "Sneakers", imageName: "1"),
                   GGGift(id: 1, title: "LED lights", imageName: "2"),
                   GGGift(id: 2, title: "Power Bank", imageName: "3"),
@@ -36,6 +37,7 @@ var GGgiftsone = [GGGift(id: 0, title: "Sneakers", imageName: "1"),
                   GGGift(id: 20, title: "Stationery", imageName: "21"),
                   GGGift(id: 21, title: "Water Bottle", imageName: "22"),
 ]
+
 
 var GGgiftstwo = [GGGift(id: 0, title: "Spider Plant", imageName: "23"),
                   GGGift(id: 1, title: "Pilea Plant", imageName: "24"),

@@ -16,7 +16,7 @@ struct GiftSearchView: View {
         NavigationView {
             List {
                 Text("Disclaimer: Pressing these will take you to the Amazon Webpage")
-                ForEach(Array(giftIdeasDict), id: \.key){ key, value in
+                ForEach(giftIdeasDict.sorted(by: <), id: \.key){ key, value in
                         Link(destination: URL(string: value)!,label: {
                             HStack {
                                 Text(key.capitalized)
@@ -24,7 +24,6 @@ struct GiftSearchView: View {
                                 Image(systemName: "figure.walk")
                                     .foregroundColor(Color.blue)
                             }
-                            //.padding()
                         })
                     }
                 }
