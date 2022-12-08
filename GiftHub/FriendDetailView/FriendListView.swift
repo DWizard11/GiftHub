@@ -75,6 +75,7 @@ struct FriendListView: View {
                     }
                 }
                 .searchable(text: $searchText)
+                .disableAutocorrection(true)
             }
             .navigationTitle("Contacts")
         }

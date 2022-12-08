@@ -31,10 +31,11 @@ struct FriendDetailView: View {
     
     @State var isSheetPresented = false
     @State var isDislikeSheetPresented = false
-   
   
     @State var currentPage: Page?
     @State var valueToPass = 10
+    @State var currentDate = Date()
+    @FocusState var notesIsFocused: Bool
     @Binding var contact: ContactInfo
     @ObservedObject var contactManager: ContactInfoManager
     
@@ -63,6 +64,7 @@ struct FriendDetailView: View {
     
     var body: some View {
         
+        
         Form {
             Section("About") {
                 
@@ -70,18 +72,18 @@ struct FriendDetailView: View {
                     .font(.headline)
                 
                 HStack {
-                    Text("Birthday")
+                    Text("Birthday:")
                     Spacer()
                     Text(verbatim: "\(contact.birthday?.day ?? 0)/\(contact.birthday?.month ?? 0)/\(contact.birthday?.year ?? 0)")
                 }
                 
-                Picker("Age", selection: $selectedAge) {
-                    ForEach(1 ... 99, id: \.self) {
-                        Text("\($0)")
-                    }
+                HStack {
+                    Text("Age:")
+                    Spacer()
+                    Text("\(getYear(date:currentDate) - (contact.birthday?.year ?? 0))")
                 }
                 
-                Picker("Relationship", selection: $selectedRelationship) {
+                Picker("Relationship:", selection: $selectedRelationship) {
                     ForEach(relationships, id: \.self) { relationship in
                         Text(relationship)
                     }
@@ -179,6 +181,18 @@ struct FriendDetailView: View {
                     }
                 }
             }
+            Section("Notes") {
+                VStack {
+                    TextField("Add Notes", text: $contact.notes, axis: .vertical)
+                        .focused($notesIsFocused)
+                        
+                    Button("Done") {
+                        notesIsFocused = false
+                    }
+                }
+                
+
+            }
         }
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -197,4 +211,13 @@ struct FriendDetailView: View {
             }
         }
     }
+}
+private func getYear(date: Date) -> Int {
+    
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.year], from:  date)
+    let year = components.year
+    
+    return year ?? 0
+    
 }

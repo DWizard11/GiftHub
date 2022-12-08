@@ -25,8 +25,8 @@ extension UIColor {
     }
 }
 let color2 = UIColor(red: 255, green: 248, blue: 211)
-let color3 = Color(red: 255/255, green: 240/255, blue: 172/255)
-let color4 = Color(red: 255/255, green: 255/255, blue: 109/255)
+let color3 = UIColor(red: 255, green: 240, blue: 172)
+let color4 = UIColor(red: 255, green: 255, blue: 109)
 
 
 
@@ -79,7 +79,7 @@ struct HomeCalendarView: View {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 15)
                                         .frame(width: 350, height: 75)
-                                        .foregroundColor(currentMode == .dark ? Color.white : Color(UIColor.lightGray))
+                                        .foregroundColor(currentMode == .dark ? Color.white : Color(color3))
                             
                                     HStack{
                                         Image(systemName: "person.circle.fill")

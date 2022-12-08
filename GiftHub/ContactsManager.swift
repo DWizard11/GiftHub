@@ -28,7 +28,8 @@ struct ContactInfo : Identifiable, Codable{
     var likes: [String]
     var dislikes: [String]
     var giftIdeas: [String]
-    var hasBeenBought: Bool 
+    var hasBeenBought: Bool
+    var notes: String
 }
 
 class FetchContacts {
@@ -48,7 +49,7 @@ class FetchContacts {
                 
                 if isNew && contact.birthday != nil {
                     DispatchQueue.main.async {
-                        contactInfoManager.contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false))
+                        contactInfoManager.contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false, notes: ""))
                         contactInfoManager.contacts = contactInfoManager.contacts.sorted {
                                     $0.firstName < $1.firstName
                         }
