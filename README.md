@@ -1,5 +1,4 @@
-# GiftHub
-GiftDuck 
+# GiftDuck
 
 Description of the App:
 
