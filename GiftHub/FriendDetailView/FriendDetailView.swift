@@ -185,6 +185,7 @@ struct FriendDetailView: View {
                 VStack {
                     TextField("Add Notes", text: $contact.notes, axis: .vertical)
                         .focused($notesIsFocused)
+                        .font(.headline)
                         
                     Button("Done") {
                         notesIsFocused = false

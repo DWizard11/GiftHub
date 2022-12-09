@@ -19,6 +19,7 @@ struct FriendGiftIdeaDetailView: View {
     @State var friendgiftideaselectedmeans = "Online"
     @State var friendgiftideameans = ["Online", "Self-Pickup", "Offline In-shop"]
     @State var friendgiftideanotes = ""
+    @FocusState private var isNotesShown: Bool
     var friend: ContactInfo {
         get {
             let contactIndex = self.contactManager.contacts.firstIndex {
@@ -59,15 +60,14 @@ struct FriendGiftIdeaDetailView: View {
                         .font(.headline)
             }
             Section("More") {
-                TextField("Notes eg. Colour/Theme of Gift ", text: $friendgiftideanotes)
-                    .font(.headline)
-                    .padding(.bottom)
-                    .padding(.bottom)
-                    .padding(.bottom)
-                    .padding(.bottom)
-                    .padding(.bottom)
-                    .padding(.bottom)
-                    .padding(.bottom)
+                VStack {
+                    TextField("Notes eg. Colour/Theme of Gift ", text: $friendgiftideanotes, axis: .vertical)
+                        .font(.headline)
+                        .focused($isNotesShown)
+                    Button("Done") {
+                        isNotesShown = false
+                    }
+                }
             }
             Button("Has been \(contact.hasBeenBought ? "not bought" : "bought")") {
                     contact.hasBeenBought.toggle()
