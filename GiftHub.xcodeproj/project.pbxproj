@@ -154,9 +154,9 @@
 				4CBA4329290CCD8300E66A3A /* HomeCalendarView.swift */,
 				4CE560F4290387EF001D233A /* GiftHubApp.swift */,
 				4CE560F6290387EF001D233A /* ContentView.swift */,
+				D90F43CB292123620068915F /* CalenderView.swift */,
 				4CE560F8290387F0001D233A /* Assets.xcassets */,
 				4CE560FB290387F0001D233A /* Preview Content */,
-				D90F43CB292123620068915F /* CalenderView.swift */,
 			);
 			path = GiftHub;
 			sourceTree = "<group>";

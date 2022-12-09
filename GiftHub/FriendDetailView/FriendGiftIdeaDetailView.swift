@@ -17,7 +17,7 @@ struct FriendGiftIdeaDetailView: View {
     @State var friendgiftidealocation = ""
     @State var friendgiftideaproduct = ""
     @State var friendgiftideaselectedmeans = "Online"
-    @State var friendgiftideameans = ["Online", "In-person Visit", "Via Amazon"]
+    @State var friendgiftideameans = ["Online", "Self-Pickup", "Offline In-shop"]
     @State var friendgiftideanotes = ""
     var friend: ContactInfo {
         get {

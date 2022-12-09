@@ -11,11 +11,11 @@ struct GiftSearchView: View {
     
     @State var searchText = ""
     @State var isAlertShown = false
+    @AppStorage("shown") var alertShownOnce: Bool = false 
    
     var body: some View {
         NavigationView {
             List {
-                Text("Disclaimer: Pressing these will take you to the Amazon Webpage")
                 ForEach(giftIdeasDict.sorted(by: <), id: \.key){ key, value in
                         Link(destination: URL(string: value)!,label: {
                             HStack {
@@ -30,6 +30,21 @@ struct GiftSearchView: View {
             .searchable(text: $searchText)
             .navigationTitle("Gift Search")
         }
+        .onAppear{
+            if !alertShownOnce {
+                isAlertShown = true
+            }
+        }
+        .alert(isPresented: $isAlertShown) {
+                    Alert(
+                        title: Text("Disclaimer: "),
+                        message: Text("Pressing these links will take you out of the app and into the Amazon Webpage."),
+                        dismissButton: .cancel(Text("I understand"), action: {
+                            isAlertShown = false
+                            alertShownOnce = true
+                        })
+                    )
+                }
     }
     
     var gifts: [String] {

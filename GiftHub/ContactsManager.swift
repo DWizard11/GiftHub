@@ -50,9 +50,7 @@ class FetchContacts {
                 if isNew && contact.birthday != nil {
                     DispatchQueue.main.async {
                         contactInfoManager.contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false, notes: ""))
-                        contactInfoManager.contacts = contactInfoManager.contacts.sorted {
-                                    $0.firstName < $1.firstName
-                        }
+                        contactInfoManager.contacts = contactInfoManager.contacts.sorted { $0.firstName < $1.firstName }
                     }
                 }
                 
