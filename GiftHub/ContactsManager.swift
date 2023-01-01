@@ -38,25 +38,27 @@ class FetchContacts {
         var contacts = currentContacts
         let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactBirthdayKey, CNContactIdentifierKey]
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
-        do {
-            try CNContactStore().enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
-                var isNew = true
-                for person in currentContacts {
-                    if contact.identifier == person.identifier {
-                        isNew = false
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try CNContactStore().enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
+                    var isNew = true
+                    for person in currentContacts {
+                        if contact.identifier == person.identifier {
+                            isNew = false
+                        }
                     }
-                }
-                
-                if isNew && contact.birthday != nil {
-                    DispatchQueue.main.async {
-                        contactInfoManager.contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false, notes: ""))
-                        contactInfoManager.contacts = contactInfoManager.contacts.sorted { $0.firstName < $1.firstName }
+                    
+                    if isNew && contact.birthday != nil {
+                        DispatchQueue.main.async {
+                            contactInfoManager.contacts.append(ContactInfo(firstName: contact.givenName, lastName: contact.familyName, isStarred: false, identifier: contact.identifier, likes: [], dislikes: [], giftIdeas: [], hasBeenBought: false, notes: ""))
+                            contactInfoManager.contacts = contactInfoManager.contacts.sorted { $0.firstName < $1.firstName }
+                        }
                     }
-                }
-                
-            })
-        } catch let error {
-            print("Failed", error)
+                    
+                })
+            } catch let error {
+                print("Failed", error)
+            }
         }
         return contacts
     }
